@@ -11,12 +11,14 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kamytt.vercel.app"),
+
   title: "kamytt.",
   description: "Electronic music artist",
   openGraph: {
     title: "kamytt.",
     description: "Electronic music artist",
-    images: ["/opengraph-image.png"],
+    images: ["/favicon-16x16.png"],
   },
   icons: {
     icon: [
