@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = localFont({
+  src: "./fonts/Geist-Thin.woff2",
+});
+
+const geistMono = localFont({
+  src: "./fonts/GeistMono-Regular.woff2",
+});
 
 export const metadata: Metadata = {
   title: "kamytt.",
@@ -39,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-[#080808]">
-      <body className="font-sans antialiased">{children}</body>
+      <body className={`${geist.className} antialiased`}>{children}</body>
     </html>
   );
 }

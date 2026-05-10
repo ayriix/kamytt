@@ -270,7 +270,7 @@ export default function Home() {
 
   useEffect(() => {
     // Simulate loading time for skeleton
-    const timer = setTimeout(() => setIsLoading(false), 1200);
+    const timer = setTimeout(() => setIsLoading(false), 900);
     return () => clearTimeout(timer);
   }, []);
 
@@ -285,12 +285,12 @@ export default function Home() {
       if (displayText.length < fullText.length) {
         timeout = setTimeout(() => {
           setDisplayText(fullText.slice(0, displayText.length + 1));
-        }, 120); // Moderate typing speed
+        }, 150); // Moderate typing speed
       } else {
         // Hold for 1.5-2 seconds before deleting
         timeout = setTimeout(() => {
           setIsDeleting(true);
-        }, 1800);
+        }, 1700);
       }
     } else {
       // Deleting phase
