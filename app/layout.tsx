@@ -15,10 +15,24 @@ export const metadata: Metadata = {
 
   title: "kamytt.",
   description: "Electronic music artist",
+
   openGraph: {
     title: "kamytt.",
     description: "Electronic music artist",
-    images: [";og.png"],
+    url: "https://kamytt.vercel.app",
+    siteName: "kamytt",
+
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "kamytt",
+      },
+    ],
+
+    locale: "en_US",
+    type: "website",
   },
   icons: {
     icon: [
