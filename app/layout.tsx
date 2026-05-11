@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "kamytt.",
     description: "Electronic music artist",
-    images: ["./favicon-16x16.png"],
+    images: [";og.png"],
   },
   icons: {
     icon: [

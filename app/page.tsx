@@ -402,7 +402,7 @@ export default function Home() {
           {/* Main Content - Hero Section - Responsive layout */}
           <main className="relative z-10 flex flex-col lg:flex-row min-h-[calc(100vh-120px)]">
             {/* Left Section - Hero */}
-            <div className="flex-1 flex flex-col justify-center items-center lg:items-start px-12 lg:px-24 py-12 lg:py-0">
+            <div className="flex-none lg:flex-1 flex flex-col justify-start lg:justify-center items-center lg:items-start px-12 lg:px-24 pt-12 pb-10 md:pb-6 lg:pb-0 lg:py-0">
               {/* Fixed width container to prevent layout shift from typing animation */}
               <div className="w-full max-w-lg">
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl tracking-[0.35em] mb-6 text-center lg:text-left whitespace-nowrap">
@@ -410,7 +410,7 @@ export default function Home() {
                   <span className="animate-pulse">_</span>
                 </h1>
               </div>
-              <p className="text-xs tracking-[0.35em] text-white/50 mb-12 uppercase text-center lg:text-left">
+              <p className="text-xs tracking-[0.35em] text-white/50 mb-6 lg:mb-12 uppercase text-center lg:text-left">
                 Electronic Music Artist
               </p>
               <button
@@ -426,12 +426,12 @@ export default function Home() {
             </div>
 
             {/* Right Section - Latest Releases Preview */}
-            <div className="w-full lg:w-80 xl:w-96 flex flex-col justify-center items-center lg:items-start px-12 lg:px-0 lg:pr-24 py-12 lg:py-0">
-              <h2 className="text-xs tracking-[0.3em] text-white/50 mb-8 uppercase">
+            <div className="w-full lg:w-80 xl:w-96 flex flex-col justify-center items-center lg:items-start px-12 lg:px-0 lg:pr-24 pt-2 md:pt-10 md:py-12 md:pb-0 lg:py-0">
+              <h2 className="text-xs tracking-[0.3em] text-white/50 mb-4 lg:mb-8 uppercase">
                 Latest Releases
               </h2>
 
-              <div className="space-y-6 w-full max-w-sm">
+              <div className="space-y-2 lg:space-y-6 w-full max-w-sm">
                 {releases
                   .slice(-3)
                   .reverse()
