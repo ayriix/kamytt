@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const geist = localFont({
-  src: "./fonts/Geist-Thin.woff2",
+  src: "./fonts/Geist-Light.woff2",
 });
 
 const geistMono = localFont({

@@ -358,7 +358,7 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[50%_20%] scale-105"
+          className="object-cover object-[58%_20%] sm:object-[55%_20%] lg:object-[50%_20%] scale-100 sm:scale-105"
         />
 
         <div className="absolute inset-0 bg-black/30 z-1" />
@@ -405,7 +405,7 @@ export default function Home() {
             <div className="flex-1 flex flex-col justify-center items-center lg:items-start px-12 lg:px-24 py-12 lg:py-0">
               {/* Fixed width container to prevent layout shift from typing animation */}
               <div className="w-full max-w-lg">
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extralight tracking-[0.45em] mb-6 text-center lg:text-left whitespace-nowrap">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl tracking-[0.35em] mb-6 text-center lg:text-left whitespace-nowrap">
                   {displayText}
                   <span className="animate-pulse">_</span>
                 </h1>
@@ -439,7 +439,7 @@ export default function Home() {
                     <div
                       key={release.title}
                       onClick={() => scrollToRelease(release.id)}
-                      className="group relative w-full text-left p-4 -mx-4 rounded-lg cursor-pointer overflow-hidden"
+                      className="group relative w-full text-left p-4 rounded-lg cursor-pointer overflow-hidden"
                     >
                       {/* ФОН С ЗАПОЛНЕНИЕМ СЛЕВА НАПРАВО */}
                       <div className="absolute inset-0 rounded-lg bg-linear-to-r from-white/8 via-white/4 to-transparent scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 pointer-events-none" />
@@ -567,7 +567,7 @@ export default function Home() {
             <h2 className="absolute top-16 text-xs tracking-[0.3em] text-white/50 uppercase">
               Contacts
             </h2>
-            <div className="flex items-center justify-center gap-24 md:gap-40">
+            <div className="flex items-center justify-center gap-12 sm:gap-16 md:gap-40">
               <a
                 href="https://t.me/bxxxnker"
                 target="_blank"
@@ -576,7 +576,7 @@ export default function Home() {
                 aria-label="Telegram"
               >
                 <svg
-                  className="w-48 h-48 md:w-64 md:h-64"
+                  className="w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
@@ -590,7 +590,7 @@ export default function Home() {
                 aria-label="Email"
               >
                 <svg
-                  className="w-48 h-48 md:w-64 md:h-64"
+                  className="w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
