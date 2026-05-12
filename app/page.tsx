@@ -226,7 +226,7 @@ const SkeletonLoader = () => (
         <div className="h-12 w-48 bg-white/10 rounded mt-12 animate-pulse" />
       </div>
 
-      <div className="w-full lg:w-80 xl:w-96 flex flex-col justify-center items-center lg:items-start px-12 lg:px-0 lg:pr-34 py-12 lg:pt-3 lg:py-0">
+      <div className="w-full lg:w-80 xl:w-96 flex flex-col justify-center items-center lg:items-start  px-12 lg:px-0 lg:pr-34 py-12 lg:pt-3 lg:py-0">
         <div className="h-4 w-42 bg-white/10 rounded mb-12 animate-pulse" />
         <div className="space-y-16 w-full md:max-w-88 max-w-96">
           {[1, 2, 3].map((i) => (
@@ -348,261 +348,526 @@ export default function Home() {
   };
 
   // Streaming platform icons component with enhanced shadow on more icon
-
   return (
-    <div className="relative h-screen bg-[#080808] text-white overflow-x-hidden cursor-crosshair">
-      <div className="absolute inset-0 overflow-hidden">
-        <Image
-          src="/jumpstyle2.jpg"
-          alt="cover"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[58%_20%] sm:object-[55%_20%] lg:object-[50%_20%] scale-100 sm:scale-105"
-        />
-
-        <div className="absolute inset-0 bg-black/30 z-1" />
-        <div className="absolute inset-0 vhs-scanlines z-2" />
-        <div className="vhs-band z-3" />
-        <div className="absolute inset-0 vhs-vignette z-4" />
-
-        <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/50 to-transparent z-5 pointer-events-none" />
-      </div>
-
+    <div className="relative min-h-screen bg-[#080808] text-white overflow-x-hidden cursor-crosshair">
       {isLoading ? (
         <SkeletonLoader />
       ) : (
         <>
-          {/* Minimal Centered Navigation */}
-          <header className="relative z-10 flex justify-center pt-12">
-            <nav className="flex items-center gap-16">
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("releases")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="text-xs tracking-[0.3em] text-white/80 hover:text-white transition-colors uppercase cursor-pointer bg-transparent border-none"
-              >
-                Releases
-              </button>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="text-xs tracking-[0.3em] text-white/80 hover:text-white transition-colors uppercase cursor-pointer bg-transparent border-none"
-              >
-                Contact
-              </button>
-            </nav>
-          </header>
-
-          {/* Main Content - Hero Section - Responsive layout */}
-          <main className="relative z-10 flex flex-col lg:flex-row min-h-[calc(100vh-120px)]">
-            {/* Left Section - Hero */}
-            <div className="flex-none lg:flex-1 flex flex-col justify-start lg:justify-center items-center lg:items-start px-12 lg:px-24 pt-12 pb-10 md:pb-6 lg:pb-0 lg:py-0">
-              {/* Fixed width container to prevent layout shift from typing animation */}
-              <div className="w-full max-w-lg">
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl tracking-[0.35em] mb-6 text-center lg:text-left whitespace-nowrap">
-                  {displayText}
-                  <span className="animate-pulse">_</span>
-                </h1>
-              </div>
-              <p className="text-xs tracking-[0.35em] text-white/50 mb-6 lg:mb-12 uppercase text-center lg:text-left">
-                Electronic Music Artist
-              </p>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("releases")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="w-fit px-8 py-3 border border-white/50 text-[14px] tracking-[0.35em] hover:bg-white hover:text-black transition-all duration-300 uppercase cursor-pointer"
-              >
-                Listen Now
-              </button>
-            </div>
-
-            {/* Right Section - Latest Releases Preview */}
-            <div className="w-full lg:w-80 xl:w-96 flex flex-col justify-center items-center lg:items-start px-12 lg:px-0 lg:pr-24 pt-2 md:pt-10 md:py-12 md:pb-0 lg:py-0">
-              <h2 className="text-xs tracking-[0.3em] text-white/50 mb-4 lg:mb-8 uppercase">
-                Latest Releases
-              </h2>
-
-              <div className="space-y-2 lg:space-y-6 w-full max-w-sm">
-                {releases
-                  .slice(-3)
-                  .reverse()
-                  .map((release) => (
-                    <div
-                      key={release.title}
-                      onClick={() => scrollToRelease(release.id)}
-                      className="group relative w-full text-left p-4 rounded-lg cursor-pointer overflow-hidden"
-                    >
-                      {/* ФОН С ЗАПОЛНЕНИЕМ СЛЕВА НАПРАВО */}
-                      <div className="absolute inset-0 rounded-lg bg-linear-to-r from-white/8 via-white/4 to-transparent scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 pointer-events-none" />
-
-                      {/* КОНТЕНТ */}
-                      <div className="relative z-10">
-                        <div className="flex items-baseline justify-between mb-2">
-                          <h3 className="text-sm tracking-[0.2em] font-light group-hover:text-white transition-colors">
-                            {release.title}
-                          </h3>
-                          <span className="text-xs text-white/40">
-                            — {release.date.slice(0, 4)}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-4 text-white/50">
-                          <span className="text-xs tracking-wider">
-                            → LISTEN ON
-                          </span>
-
-                          <StreamingIcons
-                            releaseId={release.id}
-                            showMore={true}
-                            onMoreClick={scrollToRelease}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </main>
-
-          {/* Down Arrow - Static at bottom center of hero section */}
-          <div className="relative z-10 flex justify-center">
-            <button
-              onClick={() =>
-                document
-                  .getElementById("releases")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-white/40 hover:border-white/80 text-white/60 hover:text-white transition-all cursor-pointer animate-bounce"
-              aria-label="Scroll to releases"
-            >
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 5v14m0 0l-6-6m6 6l6-6" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Releases Section - Responsive 3-column grid */}
+          {/* HERO SECTION */}
           <section
-            id="releases"
-            className="relative z-10 px-12 lg:px-24 pt-12 pb-12"
+            id="hero"
+            className="relative isolate min-h-screen flex flex-col overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-20 bg-linear-to-b from-black to-transparent pointer-events-none" />
-            <h2 className="text-xs tracking-[0.3em] text-white/50 mb-12 uppercase text-center">
-              Releases
-            </h2>
+            {/* Background */}
+            <div className="absolute inset-0 overflow-hidden">
+              <Image
+                src="/jumpstyle2.jpg"
+                alt="cover"
+                fill
+                priority
+                sizes="100vw"
+                className="
+                object-cover
+                object-[60%_20%]
+                sm:object-[55%_20%]
+                lg:object-[50%_20%]
+                scale-100 sm:scale-105
+              "
+              />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-              {[...releases].reverse().map((release) => (
+              <div className="absolute inset-0 bg-black/30 z-[1]" />
+              <div className="absolute inset-0 vhs-scanlines z-[2]" />
+              <div className="vhs-band z-[3]" />
+              <div className="absolute inset-0 vhs-vignette z-[4]" />
+
+              {/* bottom cinematic fade */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-black/50 to-transparent z-[5] pointer-events-none" />
+            </div>
+
+            {/* CONTENT */}
+            <div className="relative z-10 flex-1 flex flex-col">
+              {/* Navigation */}
+              <header className="flex justify-center pt-10 sm:pt-12">
+                <nav className="flex items-center gap-10 sm:gap-16">
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById("releases")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="
+                    text-xs tracking-[0.3em]
+                    text-white/80 hover:text-white
+                    transition-colors uppercase
+                    cursor-pointer bg-transparent border-none
+                  "
+                  >
+                    Releases
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="
+                    text-xs tracking-[0.3em]
+                    text-white/80 hover:text-white
+                    transition-colors uppercase
+                    cursor-pointer bg-transparent border-none
+                  "
+                  >
+                    Contact
+                  </button>
+                </nav>
+              </header>
+
+              {/* Main Hero Content */}
+              <main
+                className="
+                flex-1
+                flex flex-col lg:flex-row
+                items-center
+                justify-center
+                px-6 sm:px-12 lg:px-24
+                py-12 lg:py-0
+                gap-16 lg:gap-0
+              "
+              >
+                {/* Left */}
                 <div
-                  key={release.id}
-                  id={release.id}
-                  onClick={() => {
-                    window.history.replaceState(null, "", `#${release.id}`);
-
-                    setHighlightedCard(release.id);
-
-                    setTimeout(() => {
-                      setHighlightedCard(null);
-                    }, 800);
-                  }}
-                  className={`flex flex-col p-4 -m-4 rounded-xl transition-all duration-350 ease-out ${
-                    highlightedCard === release.id
-                      ? "bg-white/8 scale-[1.02]"
-                      : "bg-transparent scale-100"
-                  }`}
+                  className="
+                  flex-1
+                  flex flex-col
+                  justify-center
+                  items-center lg:items-start
+                  w-full
+                "
                 >
-                  {/* Cover Image Placeholder with soft gradient */}
-                  <div className="aspect-square cursor-pointer w-full rounded-lg mb-6 overflow-hidden relative group">
-                    <Image
-                      src={release.cover}
-                      alt={release.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-350 group-hover:scale-102"
-                    />
-
-                    {/* overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
-                    {/* subtle vignette */}
-                    <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.25)]" />
+                  <div className="w-full max-w-lg">
+                    <h1
+                      className="
+                      text-4xl sm:text-5xl lg:text-7xl
+                      tracking-[0.35em]
+                      mb-8
+                      text-center lg:text-left
+                      whitespace-nowrap
+                    "
+                    >
+                      {displayText}
+                      <span className="animate-pulse">_</span>
+                    </h1>
                   </div>
-                  {/* Release Info */}
-                  <h3 className="text-lg tracking-[0.15em] font-light mb-2 transition-colors duration-300 cursor-pointer hover:text-white/50">
-                    {release.title}
-                  </h3>
-                  <p className="text-sm text-white/50 mb-6">{release.date}</p>
-                  {/* Streaming Icons */}
-                  <div className="text-white/50">
-                    <FullStreamingIcons release={release} />
+
+                  <p
+                    className="
+                    text-xs
+                    tracking-[0.35em]
+                    text-white/50
+                    mb-10 lg:mb-12
+                    uppercase
+                    text-center lg:text-left
+                  "
+                  >
+                    Electronic Music Artist
+                  </p>
+
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById("releases")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="
+                    w-fit
+                    px-8 py-3
+                    border border-white/50
+                    text-[14px]
+                    tracking-[0.35em]
+                    hover:bg-white
+                    hover:text-black
+                    transition-all duration-300
+                    uppercase
+                    cursor-pointer
+                  "
+                  >
+                    Listen Now
+                  </button>
+                </div>
+
+                {/* Right */}
+                <div
+                  className="
+                  w-full
+                  lg:w-80 xl:w-92
+                  flex flex-col
+                  justify-center
+                  items-center lg:items-start
+                "
+                >
+                  <h2
+                    className="
+                    text-xs
+                    tracking-[0.3em]
+                    text-white/50
+                    mb-6 lg:mb-8
+                    uppercase pl-2
+                  "
+                  >
+                    Latest Releases
+                  </h2>
+
+                  <div className="space-y-3 lg:space-y-6 w-full max-w-sm">
+                    {releases
+                      .slice(-3)
+                      .reverse()
+                      .map((release) => (
+                        <div
+                          key={release.title}
+                          onClick={() => scrollToRelease(release.id)}
+                          className="
+                          group relative
+                          w-full text-left
+                          p-4 pl-2 rounded-lg
+                          cursor-pointer overflow-hidden
+                        "
+                        >
+                          {/* hover fill */}
+                          <div
+                            className="
+                            absolute inset-0 rounded-lg
+                            bg-gradient-to-r
+                            from-white/8
+                            via-white/4
+                            to-transparent
+                            scale-x-0
+                            origin-left
+                            transition-transform
+                            duration-500
+                            ease-out
+                            group-hover:scale-x-100
+                            pointer-events-none
+                          "
+                          />
+
+                          <div className="relative z-10">
+                            <div className="flex items-baseline justify-between mb-2">
+                              <h3
+                                className="
+                                text-sm
+                                tracking-[0.2em]
+                                font-light
+                                group-hover:text-white
+                                transition-colors
+                              "
+                              >
+                                {release.title}
+                              </h3>
+
+                              <span className="text-xs text-white/40">
+                                — {release.date.slice(0, 4)}
+                              </span>
+                            </div>
+
+                            <div className="flex items-center gap-4 text-white/50">
+                              <span className="text-xs tracking-wider">
+                                → LISTEN ON
+                              </span>
+
+                              <StreamingIcons
+                                releaseId={release.id}
+                                showMore={true}
+                                onMoreClick={scrollToRelease}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                 </div>
-              ))}
+              </main>
+
+              {/* Arrow */}
+              <div className="hidden lg:flex justify-center pb-10">
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("releases")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="
+                  flex items-center justify-center
+                  w-12 h-12
+                  rounded-full
+                  border border-white/40
+                  hover:border-white/80
+                  text-white/60 hover:text-white
+                  transition-all
+                  cursor-pointer
+                  animate-bounce
+                "
+                  aria-label="Scroll to releases"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 5v14m0 0l-6-6m6 6l6-6" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-[#080808] to-transparent pointer-events-none" />
           </section>
 
-          {/* Contact Section */}
+          {/* RELEASES SECTION */}
+          <section
+            id="releases"
+            className="
+            relative isolate
+            px-6 sm:px-12 lg:px-24
+            py-24
+          "
+          >
+            {/* top fade */}
+            <div
+              className="
+              absolute top-0 left-0
+              w-full h-24
+              bg-gradient-to-b
+              from-[#080808]
+              to-transparent
+              pointer-events-none
+              z-20
+            "
+            />
+
+            {/* bottom fade */}
+            <div
+              className="
+              absolute bottom-0 left-0
+              w-full h-24
+              bg-gradient-to-t
+              from-[#080808]
+              to-transparent
+              pointer-events-none
+              z-20
+            "
+            />
+
+            <div className="relative z-10">
+              <h2
+                className="
+                text-xs
+                tracking-[0.3em]
+                text-white/50
+                mb-16
+                uppercase
+                text-center
+              "
+              >
+                Releases
+              </h2>
+
+              <div
+                className="
+                grid grid-cols-1
+                md:grid-cols-2
+                lg:grid-cols-3
+                gap-12
+                max-w-6xl
+                mx-auto
+              "
+              >
+                {[...releases].reverse().map((release) => (
+                  <div
+                    key={release.id}
+                    id={release.id}
+                    onClick={() => {
+                      window.history.replaceState(null, "", `#${release.id}`);
+
+                      setHighlightedCard(release.id);
+
+                      setTimeout(() => {
+                        setHighlightedCard(null);
+                      }, 800);
+                    }}
+                    className={`
+                    flex flex-col
+                    p-4 -m-4
+                    rounded-xl
+                    transition-all duration-350 ease-out
+                    ${
+                      highlightedCard === release.id
+                        ? "bg-white/8 scale-[1.02]"
+                        : "bg-transparent scale-100"
+                    }
+                  `}
+                  >
+                    <div
+                      className="
+                      aspect-square
+                      cursor-pointer
+                      w-full
+                      rounded-lg
+                      mb-6
+                      overflow-hidden
+                      relative
+                      group
+                    "
+                    >
+                      <Image
+                        src={release.cover}
+                        alt={release.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="
+                        object-cover
+                        transition-transform
+                        duration-350
+                        group-hover:scale-102
+                      "
+                      />
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                      <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.25)]" />
+                    </div>
+
+                    <h3
+                      className="
+                      text-lg
+                      tracking-[0.15em]
+                      font-light
+                      mb-2
+                      transition-colors
+                      duration-300
+                      cursor-pointer
+                      hover:text-white/50
+                    "
+                    >
+                      {release.title}
+                    </h3>
+
+                    <p className="text-sm text-white/50 mb-6">{release.date}</p>
+
+                    <div className="text-white/50">
+                      <FullStreamingIcons release={release} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CONTACT SECTION */}
           <section
             id="contact"
-            className="relative z-10 bg-[#080808] min-h-screen flex flex-col items-center justify-center px-12"
+            className="
+            relative isolate
+            min-h-screen
+            flex flex-col
+            items-center
+            justify-between
+            px-6 sm:px-12
+            py-24
+          "
           >
-            <div className="absolute top-0 left-0 w-full h-24 bg-linear-to-b from-[#080808] to-transparent pointer-events-none z-20" />
-            <h2 className="absolute top-16 text-xs tracking-[0.3em] text-white/50 uppercase">
-              Contacts
-            </h2>
-            <div className="flex items-center justify-center gap-12 sm:gap-16 md:gap-40">
-              <a
-                href="https://t.me/bxxxnker"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-white transition-all duration-500 hover:scale-110"
-                aria-label="Telegram"
-              >
-                <svg
-                  className="w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                </svg>
-              </a>
+            {/* top fade */}
+            <div
+              className="
+              absolute top-0 left-0
+              w-full h-24
+              bg-gradient-to-b
+              from-[#080808]
+              to-transparent
+              pointer-events-none
+              z-20
+            "
+            />
 
-              <a
-                href="mailto:kamytt@ya.ru"
-                className="text-white/40 hover:text-white transition-all duration-500 hover:scale-110"
-                aria-label="Email"
+            <div className="relative z-10 w-full flex-1 flex flex-col">
+              <h2
+                className="
+                text-xs
+                tracking-[0.3em]
+                text-white/50
+                uppercase
+                text-center
+                mb-16
+              "
               >
-                <svg
-                  className="w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                Contacts
+              </h2>
+
+              <div className="flex-1 flex items-center justify-center">
+                <div
+                  className="
+                  flex flex-col
+                  sm:flex-row
+                  items-center
+                  justify-center
+                  gap-12 sm:gap-16 md:gap-40
+                "
                 >
-                  <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-4 7.75h8c.69 0 1.25.56 1.25 1.25v6c0 .69-.56 1.25-1.25 1.25H8c-.69 0-1.25-.56-1.25-1.25V9c0-.69.56-1.25 1.25-1.25zm7.1 1.6-3.1 2.33-3.1-2.33c-.27-.2-.65-.15-.85.12-.2.27-.15.65.12.85l3.46 2.6c.22.17.53.17.75 0l3.46-2.6c.27-.2.32-.58.12-.85-.2-.27-.58-.32-.85-.12z" />
-                </svg>
-              </a>
+                  {/* Telegram */}
+                  <a
+                    href="https://t.me/bxxxnker"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                    text-white/40
+                    hover:text-white
+                    transition-all
+                    duration-500
+                    hover:scale-110
+                  "
+                    aria-label="Telegram"
+                  >
+                    <svg
+                      className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                  </a>
+
+                  {/* Email */}
+                  <a
+                    href="mailto:kamytt@ya.ru"
+                    className="
+                    text-white/40
+                    hover:text-white
+                    transition-all
+                    duration-500
+                    hover:scale-110
+                  "
+                    aria-label="Email"
+                  >
+                    <svg
+                      className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-4 7.75h8c.69 0 1.25.56 1.25 1.25v6c0 .69-.56 1.25-1.25 1.25H8c-.69 0-1.25-.56-1.25-1.25V9c0-.69.56-1.25 1.25-1.25zm7.1 1.6-3.1 2.33-3.1-2.33c-.27-.2-.65-.15-.85.12-.2.27-.15.65.12.85l3.46 2.6c.22.17.53.17.75 0l3.46-2.6c.27-.2.32-.58.12-.85-.2-.27-.58-.32-.85-.12z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <footer className="flex justify-center pt-16">
+                <span className="text-xs text-white/30">
+                  kamytt © {new Date().getFullYear()}
+                </span>
+              </footer>
             </div>
-            <footer className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <span className="text-xs text-white/30">
-                kamytt © {new Date().getFullYear()}
-              </span>
-            </footer>
           </section>
         </>
       )}
