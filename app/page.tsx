@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { releases } from "../data/releases";
 import { SiSoundcloud, SiYoutube } from "react-icons/si";
+import Link from "next/link";
 
 type StreamingIconsProps = {
   releaseId?: string;
@@ -162,7 +163,12 @@ const FullStreamingIcons = ({
 }: {
   release: (typeof releases)[number];
 }) => (
-  <div className="flex items-center gap-4">
+  <div
+    className="
+    flex flex-wrap items-center gap-x-4 gap-y-2
+    max-w-[120px] sm:max-w-none
+  "
+  >
     {/* BandLink */}
     <a
       href={release.links.bandlink}
@@ -209,42 +215,131 @@ const FullStreamingIcons = ({
 
 // Skeleton Loading Component
 const SkeletonLoader = () => (
-  <div className="relative z-10 min-h-screen bg-transparent text-white">
-    {/* Header Skeleton */}
-    <header className="flex justify-center pt-12">
-      <nav className="flex items-center gap-16">
+  <div className="relative z-10 min-h-screen bg-transparent flex flex-col text-white overflow-hidden">
+    {/* Navigation */}
+    <header className="flex justify-center pt-10 sm:pt-12">
+      <nav className="flex items-center gap-10 sm:gap-16">
         <div className="h-3 w-24 bg-white/10 rounded animate-pulse" />
         <div className="h-3 w-20 bg-white/10 rounded animate-pulse" />
       </nav>
     </header>
 
-    {/* Main Content Skeleton - Responsive */}
-    <main className="flex flex-col lg:flex-row h-[calc(100vh-125px)]">
-      <div className="flex-1 flex flex-col justify-center items-center lg:items-start py-8 px-12 lg:px-24">
-        <div className="h-12 md:h-16 w-80 md:w-96 bg-white/10 rounded mt-4 animate-pulse" />
-        <div className="h-3 w-64 bg-white/10 rounded mt-8 animate-pulse" />
-        <div className="h-12 w-48 bg-white/10 rounded mt-12 animate-pulse" />
+    {/* Main Hero Content */}
+    <main
+      className="
+        flex-1
+        flex flex-col lg:flex-row
+        items-center
+        justify-center
+        px-6 sm:px-12 lg:px-24
+        py-12 lg:py-0
+        gap-16 lg:gap-0
+      "
+    >
+      {/* Left */}
+      <div
+        className="
+          flex-1
+          flex flex-col
+          justify-center
+          items-center lg:items-start
+          w-full
+        "
+      >
+        <div className="w-full max-w-lg flex justify-center lg:justify-start">
+          <div
+            className="
+              h-12 sm:h-14 lg:h-20
+              w-60 sm:w-96 lg:w-100
+              bg-white/10
+              rounded
+              animate-pulse
+              mb-8
+            "
+          />
+        </div>
+
+        <div
+          className="
+            h-3
+            w-64 sm:w-64
+            bg-white/10
+            rounded
+            animate-pulse
+            mb-10 lg:mb-12
+          "
+        />
+
+        <div
+          className="
+            h-12
+            w-44
+            border border-white/10
+            rounded
+            animate-pulse
+          "
+        />
       </div>
 
-      <div className="w-full lg:w-80 xl:w-96 flex flex-col justify-center items-center lg:items-start  px-12 lg:px-0 lg:pr-34 py-12 lg:pt-3 lg:py-0">
-        <div className="h-4 w-42 bg-white/10 rounded mb-12 animate-pulse" />
-        <div className="space-y-16 w-full md:max-w-88 max-w-96">
+      {/* Right */}
+      <div
+        className="
+          w-full
+          lg:w-80 xl:w-92
+          flex flex-col
+          justify-center
+          items-center lg:items-start
+        "
+      >
+        <div
+          className="
+    h-3
+    w-40
+    bg-white/10
+    rounded
+    animate-pulse
+    mb-6 lg:mb-8
+
+    mx-auto lg:mx-0
+    lg:self-start
+  "
+        />
+
+        <div className="space-y-3 lg:space-y-6 w-full max-w-sm mx-auto lg:mx-0">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="h-4 w-36 bg-white/10 rounded animate-pulse" />
-                <div className="h-3 w-12 bg-white/10 rounded animate-pulse" />
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="h-4 w-22 bg-white/10 rounded animate-pulse" />
-                <div className="flex gap-2">
-                  {[1, 2].map((j) => (
-                    <div
-                      key={j}
-                      className="h-5 w-5 bg-white/10 rounded-full animate-pulse"
-                    />
-                  ))}
-                  <div className="h-5 w-12 bg-white/10 rounded-full animate-pulse" />
+            <div
+              key={i}
+              className="
+                w-full
+                p-4 pl-2
+                rounded-lg
+              "
+            >
+              <div className="space-y-3">
+                <div className="flex items-baseline justify-between mb-2">
+                  <div className="h-4 w-32 bg-white/10 rounded animate-pulse" />
+
+                  <div className="h-3 w-12 bg-white/10 rounded animate-pulse" />
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="h-3 w-20 bg-white/10 rounded animate-pulse" />
+
+                  <div className="flex items-center gap-3">
+                    {[1, 2].map((j) => (
+                      <div
+                        key={j}
+                        className="
+                          h-5 w-5
+                          rounded-full
+                          bg-white/10
+                          animate-pulse
+                        "
+                      />
+                    ))}
+
+                    <div className="h-3 w-12 bg-white/10 rounded animate-pulse" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -253,9 +348,16 @@ const SkeletonLoader = () => (
       </div>
     </main>
 
-    {/* Arrow Skeleton */}
-    <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
-      <div className="h-12 w-12 bg-white/10 rounded-full animate-pulse" />
+    {/* Arrow */}
+    <div className="hidden lg:flex justify-center pb-12">
+      <div
+        className="
+          w-12 h-12
+          rounded-full
+          border border-white/10
+          animate-pulse
+        "
+      />
     </div>
   </div>
 );
@@ -376,13 +478,13 @@ export default function Home() {
               "
               />
 
-              <div className="absolute inset-0 bg-black/30 z-[1]" />
-              <div className="absolute inset-0 vhs-scanlines z-[2]" />
-              <div className="vhs-band z-[3]" />
-              <div className="absolute inset-0 vhs-vignette z-[4]" />
+              <div className="absolute inset-0 bg-black/30 z-1" />
+              <div className="absolute inset-0 vhs-scanlines z-2" />
+              <div className="vhs-band z-3" />
+              <div className="absolute inset-0 vhs-vignette z-4" />
 
               {/* bottom cinematic fade */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-black/50 to-transparent z-[5] pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#080808] via-black/50 to-transparent z-5 pointer-events-none" />
             </div>
 
             {/* CONTENT */}
@@ -538,7 +640,7 @@ export default function Home() {
                           <div
                             className="
                             absolute inset-0 rounded-lg
-                            bg-gradient-to-r
+                            bg-linear-to-r
                             from-white/8
                             via-white/4
                             to-transparent
@@ -632,15 +734,15 @@ export default function Home() {
             className="
             relative isolate
             px-6 sm:px-12 lg:px-24
-            py-24
+            py-10
           "
           >
             {/* top fade */}
             <div
               className="
               absolute top-0 left-0
-              w-full h-24
-              bg-gradient-to-b
+              w-full h-40
+              bg-linear-to-b
               from-[#080808]
               to-transparent
               pointer-events-none
@@ -652,8 +754,8 @@ export default function Home() {
             <div
               className="
               absolute bottom-0 left-0
-              w-full h-24
-              bg-gradient-to-t
+              w-full h-40
+              bg-linear-to-t
               from-[#080808]
               to-transparent
               pointer-events-none
@@ -677,12 +779,10 @@ export default function Home() {
 
               <div
                 className="
-                grid grid-cols-1
-                md:grid-cols-2
-                lg:grid-cols-3
-                gap-12
-                max-w-6xl
-                mx-auto
+grid grid-cols-1
+md:grid-cols-2
+lg:grid-cols-3
+gap-6 sm:gap-8 lg:gap-12
               "
               >
                 {[...releases].reverse().map((release) => (
@@ -699,10 +799,18 @@ export default function Home() {
                       }, 800);
                     }}
                     className={`
-                    flex flex-col
-                    p-4 -m-4
-                    rounded-xl
-                    transition-all duration-350 ease-out
+  relative
+
+  flex flex-row sm:flex-col
+  items-start
+  gap-5 sm:gap-0
+
+  p-4 sm:p-5
+  -m-4 sm:-m-5
+
+  rounded-3xl
+
+  transition-all duration-350 ease-out
                     ${
                       highlightedCard === release.id
                         ? "bg-white/8 scale-[1.02]"
@@ -710,17 +818,28 @@ export default function Home() {
                     }
                   `}
                   >
-                    <div
+                    <Link
+                      href={`/releases/${release.id}`}
+                      onClick={(e) => e.stopPropagation()}
                       className="
-                      aspect-square
-                      cursor-pointer
-                      w-full
-                      rounded-lg
-                      mb-6
-                      overflow-hidden
-                      relative
-                      group
-                    "
+relative
+
+w-52
+sm:w-full
+
+shrink-0
+
+aspect-square
+
+rounded-2xl
+sm:rounded-lg
+
+overflow-hidden
+
+mb-0 sm:mb-6
+
+group
+block"
                     >
                       <Image
                         src={release.cover}
@@ -735,30 +854,43 @@ export default function Home() {
                       "
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
 
                       <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.25)]" />
-                    </div>
-
-                    <h3
+                    </Link>
+                    <div
                       className="
+    flex-1 min-w-0
+
+    h-32
+    sm:h-auto
+
+    flex flex-col
+  "
+                    >
+                      <h3
+                        className="
                       text-lg
                       tracking-[0.15em]
                       font-light
-                      mb-2
+                      mb-1
+                      sm:mb-2
                       transition-colors
                       duration-300
                       cursor-pointer
                       hover:text-white/50
                     "
-                    >
-                      {release.title}
-                    </h3>
+                      >
+                        {release.title}
+                      </h3>
 
-                    <p className="text-sm text-white/50 mb-6">{release.date}</p>
+                      <p className="text-sm text-white/50 mt-auto mb-3 sm:mb-6">
+                        {release.date}
+                      </p>
 
-                    <div className="text-white/50">
-                      <FullStreamingIcons release={release} />
+                      <div className="text-white/50 mt-auto">
+                        <FullStreamingIcons release={release} />
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -776,22 +908,9 @@ export default function Home() {
             items-center
             justify-between
             px-6 sm:px-12
-            py-24
+            py-10
           "
           >
-            {/* top fade */}
-            <div
-              className="
-              absolute top-0 left-0
-              w-full h-24
-              bg-gradient-to-b
-              from-[#080808]
-              to-transparent
-              pointer-events-none
-              z-20
-            "
-            />
-
             <div className="relative z-10 w-full flex-1 flex flex-col">
               <h2
                 className="
@@ -822,14 +941,38 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-                    text-white/40
-                    hover:text-white
-                    transition-all
-                    duration-500
-                    hover:scale-110
-                  "
+    group relative
+    flex flex-col items-center
+    text-white/40
+    hover:text-white
+    active:text-white
+    transition-all
+    duration-500
+    hover:scale-110
+    active:scale-110
+  "
                     aria-label="Telegram"
                   >
+                    {/* label */}
+                    <span
+                      className="
+      absolute -top-6 lg:-top-8
+      text-xs tracking-[0.25em]
+      uppercase
+      text-white/80
+      opacity-0
+      translate-y-2
+      transition-all duration-300
+      pointer-events-none
+      group-hover:opacity-100
+      group-hover:translate-y-0
+      group-active:opacity-100
+      group-active:translate-y-0
+    "
+                    >
+                      Telegram
+                    </span>
+
                     <svg
                       className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
                       viewBox="0 0 24 24"
@@ -843,14 +986,38 @@ export default function Home() {
                   <a
                     href="mailto:kamytt@ya.ru"
                     className="
-                    text-white/40
-                    hover:text-white
-                    transition-all
-                    duration-500
-                    hover:scale-110
-                  "
+    group relative
+    flex flex-col items-center
+    text-white/40
+    hover:text-white
+    active:text-white
+    transition-all
+    duration-500
+    hover:scale-110
+    active:scale-110
+  "
                     aria-label="Email"
                   >
+                    {/* label */}
+                    <span
+                      className="
+      absolute -top-6 lg:-top-8
+      text-xs tracking-[0.25em]
+      uppercase
+      text-white/80
+      opacity-0
+      translate-y-2
+      transition-all duration-300
+      pointer-events-none
+      group-hover:opacity-100
+      group-hover:translate-y-0
+      group-active:opacity-100
+      group-active:translate-y-0
+    "
+                    >
+                      Email
+                    </span>
+
                     <svg
                       className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"
                       viewBox="0 0 24 24"
@@ -868,6 +1035,18 @@ export default function Home() {
                 </span>
               </footer>
             </div>
+            {/* top fade */}
+            <div
+              className="
+              absolute top-0 left-0
+              w-full h-40
+              bg-linear-to-b
+              from-[#080808]
+              to-transparent
+              pointer-events-none
+              z-20
+            "
+            />
           </section>
         </>
       )}
