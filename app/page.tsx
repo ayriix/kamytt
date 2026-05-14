@@ -822,24 +822,17 @@ gap-6 sm:gap-8 lg:gap-12
                       href={`/releases/${release.id}`}
                       onClick={(e) => e.stopPropagation()}
                       className="
-relative
-
-w-52
-sm:w-full
-
-shrink-0
-
-aspect-square
-
-rounded-2xl
-sm:rounded-lg
-
-overflow-hidden
-
-mb-0 sm:mb-6
-
-group
-block"
+                      relative
+                      w-32
+                      sm:w-full
+                      shrink-0
+                      aspect-square
+                      rounded-2xl
+                      sm:rounded-lg
+                      overflow-hidden
+                      mb-0 sm:mb-6
+                      group
+                      block"
                     >
                       <Image
                         src={release.cover}
@@ -860,17 +853,16 @@ block"
                     </Link>
                     <div
                       className="
-    flex-1 min-w-0
-
-    h-32
-    sm:h-auto
-
-    flex flex-col
-  "
+                      flex-1 min-w-0
+                      h-32
+                      sm:h-auto
+                      flex flex-col
+                    "
                     >
                       <h3
                         className="
-                      text-lg
+                      text-xl
+                      sm:text-lg
                       tracking-[0.15em]
                       font-light
                       mb-1
