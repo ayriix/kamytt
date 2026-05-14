@@ -5,6 +5,8 @@ import Image from "next/image";
 import { releases } from "../data/releases";
 import { SiSoundcloud, SiYoutube } from "react-icons/si";
 import Link from "next/link";
+import { createPortal } from "react-dom";
+import { motion, useMotionValue } from "framer-motion";
 
 type StreamingIconsProps = {
   releaseId?: string;
@@ -74,52 +76,95 @@ const StreamingIcons = ({
 const ExpandableLinks = ({
   links,
   icon,
+  title,
 }: {
   links: {
     url: string;
     label?: string;
   }[];
   icon: React.ReactNode;
+  title: string;
 }) => {
-  const extraCount = links.length - 1;
+  const [open, setOpen] = useState(false);
 
-  return (
-    <div className="relative group flex items-center hover:z-50">
-      {/* MAIN LINK */}
+  const extraCount = links.length - 1;
+  const y = useMotionValue(0);
+
+  if (links.length === 1) {
+    return (
       <a
         href={links[0].url}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative z-20 hover:text-white transition-colors"
+        className="hover:text-white transition-colors"
       >
         {icon}
       </a>
+    );
+  }
 
-      {/* +1 / +2 */}
-      {extraCount > 0 && (
-        <span className="ml-1.5 text-[10px] text-white/40 group-hover:text-white/70 transition-colors">
+  return (
+    <>
+      {/* desktop hover */}
+      <div
+        className="
+    relative
+    hidden sm:flex
+    group
+    items-center
+
+    min-w-10.5
+
+    hover:z-200
+  "
+      >
+        <a
+          href={links[0].url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative z-50 hover:text-white transition-colors"
+        >
+          {icon}
+        </a>
+
+        <span
+          className="
+            ml-1.5
+            text-[10px]
+            text-white/40
+            group-hover:text-white/70
+            transition-colors
+          "
+        >
           +{extraCount}
         </span>
-      )}
 
-      {/* EXTRA LINKS */}
-      {extraCount > 0 && (
         <div
           className="
-        absolute left-0 top-1/2 -translate-y-1/2
-        flex items-center gap-2
-        -ml-2
-        pl-12 pr-2 py-2
-        rounded-full
-        bg-black backdrop-blur-3xl
-        opacity-0 pointer-events-none
-        translate-x-2
-        transition-all duration-250
-        group-hover:opacity-100
-        group-hover:pointer-events-auto
-        group-hover:translate-x-0
-        z-0
-      "
+    absolute left-0 top-1/2 -translate-y-1/2
+
+    flex items-center gap-2
+
+    -ml-2
+    pl-12 pr-2 py-2
+
+    rounded-full
+
+    bg-black
+    backdrop-blur-3xl
+
+    opacity-0
+    pointer-events-none
+    translate-x-2
+
+    transition-all duration-250
+
+    group-hover:opacity-100
+    group-hover:pointer-events-auto
+    group-hover:translate-x-0
+
+    z-40
+  "
         >
           <div className="w-px h-6 bg-white/10 shrink-0 mr-1" />
 
@@ -130,31 +175,184 @@ const ExpandableLinks = ({
               target="_blank"
               rel="noopener noreferrer"
               className="
-            flex items-center gap-1.5
-            hover:text-white transition-colors
-          "
+        relative z-50
+
+        flex items-center gap-1.5
+
+        hover:text-white
+        transition-colors
+      "
             >
               {icon}
 
               <span
                 className="
-              text-[8px]
-              leading-none
-              whitespace-nowrap
-              px-1.5 py-0.5
-              rounded-full
-              bg-white/8
-              text-white/45
-              tracking-wide
-            "
+          text-[8px]
+          leading-none
+          whitespace-nowrap
+
+          px-1.5 py-0.5
+
+          rounded-full
+
+          bg-white/8
+          text-white/45
+
+          tracking-wide
+        "
               >
                 {link.label}
               </span>
             </a>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+
+      {/* mobile trigger */}
+      <button
+        onClick={() => setOpen(true)}
+        className="
+          sm:hidden
+          flex items-center
+          hover:text-white
+          transition-colors
+        "
+      >
+        {icon}
+
+        <span className="ml-1.5 text-[10px] text-white/40">+{extraCount}</span>
+      </button>
+
+      {/* fullscreen modal */}
+      {open &&
+        createPortal(
+          <div
+            className="
+        fixed inset-0
+        z-999999
+
+        bg-black/70
+
+        flex items-end
+      "
+            onClick={() => setOpen(false)}
+          >
+            <motion.div
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragDirectionLock
+              style={{ y }}
+              dragElastic={0.35}
+              onDrag={(_, info) => {
+                if (info.offset.y < 0) {
+                  y.set(0);
+                }
+              }}
+              onDragEnd={(_, info) => {
+                if (info.velocity.y > 0 && info.offset.y > 100) {
+                  setOpen(false);
+                } else {
+                  y.set(0);
+                }
+              }}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{
+                type: "spring",
+                damping: 30,
+                stiffness: 260,
+              }}
+              onClick={(e) => e.stopPropagation()}
+              className="
+          relative
+
+          w-full
+
+          rounded-t-[2.5rem]
+
+          border-t border-white/10
+          bg-[#0a0a0a]
+
+          px-6 pt-5 pb-8
+
+          shadow-[0_-20px_80px_rgba(0,0,0,0.7)]
+
+          touch-pan-y
+        "
+            >
+              {/* swipe handle */}
+              <div
+                className="
+            w-14 h-1.5
+
+            rounded-full
+
+            bg-white/15
+
+            mx-auto
+            mb-7
+          "
+              />
+
+              {/* title */}
+              <h3
+                className="
+            text-center
+
+            text-[11px]
+            tracking-[0.55em]
+            uppercase
+
+            text-white/45
+
+            mb-8
+          "
+              >
+                {title}
+              </h3>
+
+              {/* links */}
+              <div className="space-y-3">
+                {links.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                flex items-center justify-center
+
+                w-full
+                py-5
+
+                rounded-2xl
+
+                border border-white/8
+                bg-white/2
+
+                text-[11px]
+                tracking-[0.38em]
+                uppercase
+
+                text-white/65
+
+                hover:bg-white/8
+                hover:text-white
+
+                transition-all duration-300
+              "
+                  >
+                    {link.label ||
+                      (index === 0 ? "Original" : `Version ${index + 1}`)}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 };
 
@@ -166,8 +364,7 @@ const FullStreamingIcons = ({
   <div
     className="
     flex flex-wrap items-center gap-x-4 gap-y-2
-    max-w-[120px] sm:max-w-none
-  "
+    "
   >
     {/* BandLink */}
     <a
@@ -198,6 +395,7 @@ const FullStreamingIcons = ({
     {/* SoundCloud */}
     {release.links.soundcloud && (
       <ExpandableLinks
+        title="SoundCloud"
         links={release.links.soundcloud}
         icon={<SiSoundcloud className="w-7 h-7" />}
       />
@@ -206,6 +404,7 @@ const FullStreamingIcons = ({
     {/* YouTube */}
     {release.links.youtube && (
       <ExpandableLinks
+        title="YouTube"
         links={release.links.youtube}
         icon={<SiYoutube className="w-7 h-7" />}
       />
@@ -239,7 +438,7 @@ const SkeletonLoader = () => (
       {/* Left */}
       <div
         className="
-          flex-1
+          lg:flex-1
           flex flex-col
           justify-center
           items-center lg:items-start
