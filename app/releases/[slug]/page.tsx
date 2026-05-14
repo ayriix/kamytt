@@ -88,7 +88,7 @@ export default async function ReleasePage({
     pt-14 sm:pt-10
     grid
     xl:grid-cols-[minmax(0,1fr)_420px]
-    gap-10 md:gap-16 xl:gap-24
+    gap-12 md:gap-16 xl:gap-24
     items-center
     mb-10 xl:mb-6
   "
@@ -215,7 +215,7 @@ export default async function ReleasePage({
     overflow-hidden
     rounded-4xl
     border border-white/10
-    -rotate-2
+    -rotate-4
     hover:rotate-0
     transition-transform duration-500
   "
@@ -234,7 +234,7 @@ export default async function ReleasePage({
         </div>
 
         {/* LINKS */}
-        <div className="max-w-4xl mt-20 lg:mt-28" id="streaming-links">
+        <div className="max-w-4xl mt-24 lg:mt-32" id="streaming-links">
           <div className="space-y-5">
             {/* BANDLINK */}
             <a

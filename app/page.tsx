@@ -443,7 +443,7 @@ const SkeletonLoader = () => (
         justify-center
         px-6 sm:px-12 lg:px-24
         py-12 lg:py-0
-        gap-16 lg:gap-0
+        gap-12 lg:gap-0
       "
     >
       {/* Left */}
@@ -508,7 +508,7 @@ const SkeletonLoader = () => (
     bg-white/10
     rounded
     animate-pulse
-    mb-6 lg:mb-8
+    mb-2 lg:mb-8
 
     mx-auto lg:mx-0
     lg:self-start
@@ -745,13 +745,13 @@ export default function Home() {
                 justify-center
                 px-6 sm:px-12 lg:px-24
                 py-12 lg:py-0
-                gap-16 lg:gap-0
+                gap-12 lg:gap-0
               "
               >
                 {/* Left */}
                 <div
                   className="
-                  flex-1
+                  lg:flex-1
                   flex flex-col
                   justify-center
                   items-center lg:items-start
@@ -824,7 +824,7 @@ export default function Home() {
                     text-xs
                     tracking-[0.3em]
                     text-white/50
-                    mb-6 lg:mb-8
+                    mb-2 lg:mb-8
                     uppercase pl-2
                   "
                   >
