@@ -745,7 +745,7 @@ export default function Home() {
                 justify-center
                 px-6 sm:px-12 lg:px-24
                 py-12 lg:py-0
-                gap-12 lg:gap-0
+                gap-16 lg:gap-0
               "
               >
                 {/* Left */}

@@ -88,7 +88,7 @@ export default async function ReleasePage({
     pt-14 sm:pt-10
     grid
     xl:grid-cols-[minmax(0,1fr)_420px]
-    gap-12 md:gap-16 xl:gap-24
+    gap-16 md:gap-16 xl:gap-24
     items-center
     mb-10 xl:mb-6
   "
