@@ -90,6 +90,18 @@ const ExpandableLinks = ({
   const extraCount = links.length - 1;
   const y = useMotionValue(0);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   if (links.length === 1) {
     return (
       <a
@@ -259,9 +271,8 @@ const ExpandableLinks = ({
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{
-                type: "spring",
-                damping: 30,
-                stiffness: 260,
+                duration: 0.5,
+                ease: [0.16, 1, 0.3, 1],
               }}
               onClick={(e) => e.stopPropagation()}
               className="
@@ -284,7 +295,7 @@ const ExpandableLinks = ({
               {/* swipe handle */}
               <div
                 className="
-            w-14 h-1.5
+            w-16 h-1.5
 
             rounded-full
 
@@ -300,7 +311,7 @@ const ExpandableLinks = ({
                 className="
             text-center
 
-            text-[11px]
+            text-[12px]
             tracking-[0.55em]
             uppercase
 
@@ -448,8 +459,8 @@ const SkeletonLoader = () => (
         <div className="w-full max-w-lg flex justify-center lg:justify-start">
           <div
             className="
-              h-12 sm:h-14 lg:h-20
-              w-60 sm:w-96 lg:w-100
+              h-12 sm:h-14 lg:h-16
+              w-60 sm:w-96 lg:w-104
               bg-white/10
               rounded
               animate-pulse
