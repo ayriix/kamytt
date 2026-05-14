@@ -105,15 +105,24 @@ export default async function ReleasePage({
             <h1
               className="
     mt-2
-    text-6xl
+    text-5xl
     sm:text-7xl
     lg:text-[88px]
     leading-[0.9]
+    
     tracking-[0.08em] lg:tracking-[0.12em]
     max-w-none xl:max-w-[9ch]
   "
             >
-              {release.title}
+              {release.id === "sugarjump" ? (
+                <>
+                  SUGAR
+                  <span className="hidden sm:inline">JUMP!</span>
+                  <span className="block mt-1 sm:hidden">JUMP!</span>
+                </>
+              ) : (
+                release.title
+              )}
             </h1>
 
             <div

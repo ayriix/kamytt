@@ -4,7 +4,8 @@ const createRelease = (
   date: string,
   cover: string,
   links: {
-    bandlink: string;
+    bandlink?: string;
+
     soundcloud?: {
       url: string;
       label?: string;
@@ -15,12 +16,15 @@ const createRelease = (
       label?: string;
     }[];
   },
+
+  upcoming = false,
 ) => ({
   id,
   title,
   date,
   cover,
   links,
+  upcoming,
 });
 
 export const releases = [
@@ -256,4 +260,5 @@ export const releases = [
       },
     ],
   }),
+  createRelease("upcoming", "UPCOMING RELEASE", "2026-**-**", "", {}, true),
 ];
