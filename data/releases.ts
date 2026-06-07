@@ -261,4 +261,7 @@ export const releases = [
     ],
   }),
   createRelease("upcoming", "UPCOMING RELEASE", "2026-**-**", "", {}, true),
+  createRelease("limerence", "LIMERENCE", "2026-06-26", "", {}, true),
 ];
+
+export type Release = ReturnType<typeof createRelease>;

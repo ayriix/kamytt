@@ -41,20 +41,7 @@ export const metadata: Metadata = {
     images: ["https://kamytt.vercel.app/og.png"],
   },
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon-light-32x32.png",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/favicon.ico",
     apple: "/apple-icon.png",
   },
 };
@@ -65,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-[#080808]">
+    <html lang="en" data-scroll-behavior="smooth" className="bg-[#080808]">
       <body className={`${geist.className} antialiased`}>{children}</body>
     </html>
   );
