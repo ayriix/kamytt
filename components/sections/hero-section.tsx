@@ -18,25 +18,21 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting) {
-      // Typing phase
       if (displayText.length < fullText.length) {
         timeout = setTimeout(() => {
           setDisplayText(fullText.slice(0, displayText.length + 1));
-        }, 150); // Moderate typing speed
+        }, 150);
       } else {
-        // Hold for 1.5-2 seconds before deleting
         timeout = setTimeout(() => {
           setIsDeleting(true);
         }, 1700);
       }
     } else {
-      // Deleting phase
       if (displayText.length > 0) {
         timeout = setTimeout(() => {
           setDisplayText(displayText.slice(0, -1));
-        }, 80); // Slightly faster deletion
+        }, 80);
       } else {
-        // Small pause before restarting
         timeout = setTimeout(() => {
           setIsDeleting(false);
         }, 500);
@@ -89,13 +85,11 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
         <div className="vhs-band z-3" />
         <div className="absolute inset-0 vhs-vignette z-4" />
 
-        {/* bottom cinematic fade */}
         <div className="absolute inset-0 bg-linear-to-t from-[#080808] via-black/50 to-transparent z-5 pointer-events-none" />
       </div>
 
       {/* CONTENT */}
       <div className="relative z-10 flex-1 flex flex-col">
-        {/* Navigation */}
         <header className="flex justify-center pt-10 sm:pt-12">
           <nav className="flex items-center gap-10 sm:gap-16">
             <button
