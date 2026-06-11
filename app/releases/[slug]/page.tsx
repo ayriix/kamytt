@@ -37,7 +37,6 @@ export default async function ReleasePage({
 
   return (
     <main className="relative min-h-screen bg-[#080808] text-white overflow-hidden cursor-crosshair">
-      {/* background noise glow */}
       <div
         className="
         absolute inset-0
@@ -46,17 +45,7 @@ export default async function ReleasePage({
       "
       />
 
-      <div
-        className="
-    relative z-10
-    min-h-screen
-    flex flex-col justify-center
-    max-w-7xl
-    mx-auto
-    px-6 sm:px-10 lg:px-16
-    py-20 lg:py-24
-  "
-      >
+      <div className="relative z-10min-h-screenflex flex-col justify-centermax-w-7xlmx-autopx-6 sm:px-10 lg:px-16 py-20 lg:py-24">
         <Link
           href="/"
           className="
@@ -93,7 +82,6 @@ export default async function ReleasePage({
     mb-10 xl:mb-6
   "
         >
-          {/* title block */}
           <div
             className="
     min-w-0
@@ -148,29 +136,73 @@ export default async function ReleasePage({
             <a
               href="#streaming-links"
               className="
-    inline-flex
-    items-center
-    justify-center
-    mt-10
-    px-16 py-3
-    border border-white/50
+              group
+              relative
 
-    uppercase
-    text-[14px]
-    tracking-[0.35em]
-    hover:bg-white
-    hover:text-black
+              inline-flex
+              items-center
+              justify-center
 
-    transition-all duration-300
-  "
+              mt-10
+              px-8 py-3
+
+              border border-white/50
+
+              uppercase
+              text-[16px]
+              tracking-[0.35em]
+
+              hover:bg-white
+              hover:text-black
+
+              transition-all duration-300
+
+              overflow-hidden
+            "
             >
-              Listen
+              <div
+                className="
+                absolute
+                left-4
+                top-1/2
+                -translate-y-1/2
+
+                flex items-end
+                gap-[2.5px]
+
+                opacity-0
+                group-hover:opacity-100
+
+                transition-opacity
+                duration-300
+              "
+              >
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="visualizer-mini bg-black"
+                    style={{
+                      height: "18px",
+                      width: "2px",
+                      animationDelay: `${i * 0.08}s`,
+                    }}
+                  />
+                ))}
+              </div>
+
+              <span
+                className="
+                relative z-10
+                transition-transform duration-300
+                group-hover:translate-x-4
+              "
+              >
+                Listen
+              </span>
             </a>
           </div>
 
-          {/* cover */}
           <div className="group relative mx-auto xl:mx-0">
-            {/* floating fragments */}
             <div className="absolute inset-0 pointer-events-none">
               {fragments.map((fragment, i) => (
                 <div
@@ -198,7 +230,6 @@ export default async function ReleasePage({
                 </div>
               ))}
             </div>
-            {/* glow */}
             <div
               className="
     absolute inset-[-5%]
@@ -245,7 +276,6 @@ export default async function ReleasePage({
         {/* LINKS */}
         <div className="max-w-4xl mt-24 lg:mt-32" id="streaming-links">
           <div className="space-y-5">
-            {/* BANDLINK */}
             <a
               href={release.links.bandlink}
               target="_blank"
@@ -287,7 +317,6 @@ export default async function ReleasePage({
               </div>
             </a>
 
-            {/* SOUNDCLOUD */}
             {release.links.soundcloud?.map((link, index) => (
               <a
                 key={link.url}
@@ -329,7 +358,6 @@ export default async function ReleasePage({
               </a>
             ))}
 
-            {/* YOUTUBE */}
             {release.links.youtube?.map((link, index) => (
               <a
                 key={link.url}
@@ -347,9 +375,9 @@ export default async function ReleasePage({
               >
                 <div
                   className="
-    text-xl
-    tracking-[0.18em]
-  "
+                  text-xl
+                  tracking-[0.18em]
+                "
                 >
                   YOUTUBE
                   {link.label && (

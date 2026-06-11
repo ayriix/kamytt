@@ -183,19 +183,67 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
               className="
-                            w-fit
-                            px-8 py-3
-                            border border-white/50
-                            text-[14px]
-                            tracking-[0.35em]
-                            hover:bg-white
-                            hover:text-black
-                            transition-all duration-300
-                            uppercase
-                            cursor-pointer
-                          "
+    group
+    relative
+
+    overflow-hidden
+
+    px-8 py-3
+
+    border border-white/50
+
+    text-[16px]
+    tracking-[0.35em]
+
+    hover:bg-white
+    hover:text-black
+
+    transition-all duration-300
+
+    uppercase
+    cursor-pointer
+  "
             >
-              Listen Now
+              <div
+                className="
+                absolute
+                left-4
+                top-1/2
+                -translate-y-1/2
+
+                flex items-end
+                gap-[2.5px]
+
+                opacity-0
+                group-hover:opacity-100
+
+                transition-opacity
+                duration-300
+              "
+              >
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="visualizer-mini bg-black"
+                    style={{
+                      height: "18px",
+                      width: "2px",
+                      animationDelay: `${i * 0.08}s`,
+                    }}
+                  />
+                ))}
+              </div>
+
+              <span
+                className="
+                relative z-10
+                inline-block
+                transition-transform duration-300
+                group-hover:translate-x-4
+              "
+              >
+                Listen Now
+              </span>
             </button>
           </div>
 
