@@ -260,7 +260,25 @@ export const releases = [
       },
     ],
   }),
-  createRelease("upcoming", "UPCOMING RELEASE", "2026-**-**", "", {}, true),
+  createRelease(
+    "saint-slowed",
+    "SAINT (Slowed)",
+    "2026-06-12",
+    "/covers/20.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/saintslowed",
+        },
+      ],
+      bandlink: "https://band.link/saintslowed",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=AkAjfva_pgM&pp=ygUGa2FteXR0",
+        },
+      ],
+    },
+  ),
   createRelease("limerence", "LIMERENCE", "2026-06-26", "", {}, true),
 ];
 
