@@ -274,7 +274,10 @@ export default async function ReleasePage({
         </div>
 
         {/* LINKS */}
-        <div className="max-w-4xl mt-24 lg:mt-32" id="streaming-links">
+        <div
+          className="max-w-4xl mt-24 px-4 sm:px-0 lg:mt-32"
+          id="streaming-links"
+        >
           <div className="space-y-5">
             <a
               href={release.links.bandlink}

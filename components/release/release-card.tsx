@@ -67,6 +67,7 @@ export const ReleaseCard = ({
                       duration-300
                       cursor-pointer
                       hover:text-white/50
+                      break-words
                     "
         >
           {release.title}
