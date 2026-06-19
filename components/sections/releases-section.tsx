@@ -3,6 +3,7 @@
 import { ReleaseCard } from "../release/release-card";
 import { releases } from "@/data/releases";
 import { useEffect } from "react";
+import { usePreviewPlayer } from "@/hooks/usePreviewPlayer";
 
 type ReleaseSectionProps = {
   highlightedCard: string | null;
@@ -13,6 +14,7 @@ export const ReleaseSection = ({
   highlightedCard,
   setHighlightedCard,
 }: ReleaseSectionProps) => {
+  const { playingId, playPreview } = usePreviewPlayer();
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
 
@@ -101,6 +103,8 @@ export const ReleaseSection = ({
               release={release}
               highlightedCard={highlightedCard}
               setHighlightedCard={setHighlightedCard}
+              playingId={playingId}
+              playPreview={playPreview}
             />
           ))}
         </div>

@@ -6,13 +6,24 @@ type ReleaseCardProps = {
   release: Release;
   highlightedCard: string | null;
   setHighlightedCard: (id: string | null) => void;
+
+  playingId: string | null;
+  playPreview: (
+    id: string,
+    file: string,
+    start: number,
+    duration: number,
+  ) => void;
 };
 
 export const ReleaseCard = ({
   release,
   highlightedCard,
   setHighlightedCard,
+  playingId,
+  playPreview,
 }: ReleaseCardProps) => {
+  const preview = release.preview;
   return (
     <div
       key={release.id}
@@ -61,23 +72,66 @@ export const ReleaseCard = ({
                       sm:text-lg
                       tracking-[0.15em]
                       font-light
-                      mb-1
+                      mb-0
                       sm:mb-2
                       transition-colors
                       duration-300
                       cursor-pointer
                       hover:text-white/50
-                      break-words
+                      wrap-break-word
                     "
         >
           {release.title}
         </h3>
 
-        <p className="text-sm text-white/50 mt-auto mb-3 sm:mb-6">
-          {release.date}
-        </p>
+        <div
+          className={`
+          mt-auto mb-4 sm:mb-6
+          ${preview ? "gap-1" : "gap-0"}
+          flex flex-col
+          sm:flex-row
+          items-start
+          sm:items-center
 
-        <div className="text-white/50 mt-auto h-7">
+          ${preview ? "min-h-10" : "min-h-8"}
+          `}
+        >
+          <p className="text-sm text-white/50">{release.date}</p>
+
+          {preview ? (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+
+                playPreview(
+                  release.id,
+                  preview.file,
+                  preview.start,
+                  preview.duration,
+                );
+              }}
+              className="
+        ml-0 sm:ml-4
+        text-[11px]
+        tracking-[0.2em]
+        uppercase
+        text-white/50
+        hover:text-white
+        font-bold
+        transition-colors
+        outline-none
+        focus:outline-none
+        focus:ring-0
+      "
+            >
+              {playingId === release.id ? "❚❚ Preview" : "▶ Preview"}
+            </button>
+          ) : (
+            <div className="h-4" />
+          )}
+        </div>
+
+        <div className="text-white/50 h-7">
           {!release.upcoming && <FullStreamingIcons release={release} />}
         </div>
       </div>

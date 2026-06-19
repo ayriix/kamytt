@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import { releases } from "@/data/releases";
 import Image from "next/image";
-import { Vibrant } from "node-vibrant/node";
+// import { Vibrant } from "node-vibrant/node";
+
 import Link from "next/link";
 import path from "path";
+import { getGlow } from "@/lib/glow-cache";
 
 export default async function ReleasePage({
   params,
@@ -24,8 +26,7 @@ export default async function ReleasePage({
     release.cover.replace(/^\/+/, ""),
   );
 
-  const palette = await Vibrant.from(imagePath).getPalette();
-  const glow = palette.DarkVibrant?.hex || palette.Vibrant?.hex || "#ffffff";
+  const glow = await getGlow(slug, imagePath);
 
   const fragments = [
     "-top-8 -left-10 w-18 h-18 -rotate-12 opacity-35",

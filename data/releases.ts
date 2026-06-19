@@ -18,6 +18,11 @@ const createRelease = (
   },
 
   upcoming = false,
+  preview?: {
+    file: string;
+    start: number;
+    duration: number;
+  },
 ) => ({
   id,
   title,
@@ -25,6 +30,7 @@ const createRelease = (
   cover,
   links,
   upcoming,
+  preview,
 });
 
 export const releases = [
@@ -41,53 +47,167 @@ export const releases = [
       ],
       bandlink: "https://band.link/metamorphose4",
     },
+    false,
+    {
+      file: "/audios/metamorphosis.flac",
+      start: 85.7,
+      duration: 30,
+    },
   ),
 
-  createRelease("veyzuu", "VEYZUU", "2025-04-11", "/covers/2.png", {
-    bandlink: "https://band.link/veyzuu",
-  }),
+  createRelease(
+    "veyzuu",
+    "VEYZUU",
+    "2025-04-11",
+    "/covers/2.png",
+    {
+      bandlink: "https://band.link/veyzuu",
+    },
+    false,
+    {
+      file: "/audios/veyzuu.mp3",
+      start: 105.6,
+      duration: 30,
+    },
+  ),
 
-  createRelease("wokizoo", "WOKIZOO", "2025-04-30", "/covers/3.png", {
-    bandlink: "https://band.link/wokizoo",
-  }),
+  createRelease(
+    "wokizoo",
+    "WOKIZOO",
+    "2025-04-30",
+    "/covers/3.png",
+    {
+      bandlink: "https://band.link/wokizoo",
+    },
+    false,
+    {
+      file: "/audios/wokizoo.mp3",
+      start: 57.5,
+      duration: 30,
+    },
+  ),
 
-  createRelease("last-echo", "LAST ECHO", "2025-05-05", "/covers/4.png", {
-    bandlink: "https://band.link/lastecho",
-  }),
+  createRelease(
+    "last-echo",
+    "LAST ECHO",
+    "2025-05-05",
+    "/covers/4.png",
+    {
+      bandlink: "https://band.link/lastecho",
+    },
+    false,
+    {
+      file: "/audios/lastecho.mp3",
+      start: 70.6,
+      duration: 30,
+    },
+  ),
 
-  createRelease("cooked", "COOKED", "2025-05-15", "/covers/5.png", {
-    bandlink: "https://band.link/cooked",
-  }),
+  createRelease(
+    "cooked",
+    "COOKED",
+    "2025-05-15",
+    "/covers/5.png",
+    {
+      bandlink: "https://band.link/cooked",
+    },
+    false,
+    {
+      file: "/audios/cooked.mp3",
+      start: 58.8,
+      duration: 30,
+    },
+  ),
 
-  createRelease("crunch", "CRUNCH", "2025-06-01", "/covers/6.png", {
-    bandlink: "https://band.link/crunchcrunch",
-  }),
+  createRelease(
+    "crunch",
+    "CRUNCH",
+    "2025-06-01",
+    "/covers/6.png",
+    {
+      bandlink: "https://band.link/crunchcrunch",
+    },
+    false,
+    {
+      file: "/audios/crunch.mp3",
+      start: 46.7,
+      duration: 30,
+    },
+  ),
 
-  createRelease("absence", "ABSENCE", "2025-06-06", "/covers/7.png", {
-    bandlink: "https://band.link/absense",
-  }),
+  createRelease(
+    "absence",
+    "ABSENCE",
+    "2025-06-06",
+    "/covers/7.png",
+    {
+      bandlink: "https://band.link/absense",
+    },
+    false,
+    {
+      file: "/audios/absence.mp3",
+      start: 94.3,
+      duration: 30,
+    },
+  ),
 
-  createRelease("glide", "GLIDE", "2025-07-08", "/covers/8.jpg", {
-    bandlink: "https://band.link/gl1de",
-  }),
+  createRelease(
+    "glide",
+    "GLIDE",
+    "2025-07-08",
+    "/covers/8.jpg",
+    {
+      bandlink: "https://band.link/gl1de",
+    },
+    false,
+    {
+      file: "/audios/glide.mp3",
+      start: 50.6,
+      duration: 30,
+    },
+  ),
 
-  createRelease("solar", "SOLAR", "2025-08-01", "/covers/9.png", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/solar",
-      },
-    ],
-    bandlink: "https://band.link/solarr",
-  }),
+  createRelease(
+    "solar",
+    "SOLAR",
+    "2025-08-01",
+    "/covers/9.png",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/solar",
+        },
+      ],
+      bandlink: "https://band.link/solarr",
+    },
+    false,
+    {
+      file: "/audios/solar.mp3",
+      start: 43.4,
+      duration: 30,
+    },
+  ),
 
-  createRelease("eclipse", "ECLIPSE", "2025-10-04", "/covers/10.png", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/eclipse",
-      },
-    ],
-    bandlink: "https://band.link/eclipsephonk",
-  }),
+  createRelease(
+    "eclipse",
+    "ECLIPSE",
+    "2025-10-04",
+    "/covers/10.png",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/eclipse",
+        },
+      ],
+      bandlink: "https://band.link/eclipsephonk",
+    },
+    false,
+    {
+      file: "/audios/eclipse.mp3",
+      start: 72.3,
+      duration: 30,
+    },
+  ),
 
   createRelease(
     "eclipse-slowed",
@@ -102,20 +222,38 @@ export const releases = [
       ],
       bandlink: "https://band.link/eclipseslowed",
     },
+    false,
+    {
+      file: "/audios/eclipse-slowed.wav",
+      start: 90.3,
+      duration: 30,
+    },
   ),
 
-  createRelease("supremacy", "SUPREMACY", "2025-12-07", "/covers/12.png", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/supremacy",
-      },
-      {
-        url: "https://soundcloud.com/kamytt/supremacy-slowed",
-        label: "SLOWED",
-      },
-    ],
-    bandlink: "https://band.link/supremacy",
-  }),
+  createRelease(
+    "supremacy",
+    "SUPREMACY",
+    "2025-12-07",
+    "/covers/12.png",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/supremacy",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/supremacy-slowed",
+          label: "SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/supremacy",
+    },
+    false,
+    {
+      file: "/audios/supremacy.wav",
+      start: 59,
+      duration: 30,
+    },
+  ),
 
   createRelease(
     "peras-voando",
@@ -153,35 +291,65 @@ export const releases = [
         },
       ],
     },
+    false,
+    {
+      file: "/audios/perasvoando.wav",
+      start: 57.4,
+      duration: 30,
+    },
   ),
 
-  createRelease("moondust", "moondust", "2025-12-19", "/covers/14.png", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/moondust",
-      },
-    ],
-    bandlink: "https://band.link/angelcoree",
-    youtube: [
-      {
-        url: "https://www.youtube.com/watch?v=IyL1KIeYd5I",
-      },
-    ],
-  }),
+  createRelease(
+    "moondust",
+    "moondust",
+    "2025-12-19",
+    "/covers/14.png",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/moondust",
+        },
+      ],
+      bandlink: "https://band.link/angelcoree",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=IyL1KIeYd5I",
+        },
+      ],
+    },
+    false,
+    {
+      file: "/audios/moondust.wav",
+      start: 74.3,
+      duration: 30,
+    },
+  ),
 
-  createRelease("saint", "SAINT", "2025-12-30", "/covers/15.png", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/saint",
-      },
-    ],
-    bandlink: "https://band.link/02z6P",
-    youtube: [
-      {
-        url: "https://www.youtube.com/watch?v=m8m-1imC3tc",
-      },
-    ],
-  }),
+  createRelease(
+    "saint",
+    "SAINT",
+    "2025-12-30",
+    "/covers/15.png",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/saint",
+        },
+      ],
+      bandlink: "https://band.link/02z6P",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=m8m-1imC3tc",
+        },
+      ],
+    },
+    false,
+    {
+      file: "/audios/saint.wav",
+      start: 78.2,
+      duration: 30,
+    },
+  ),
 
   createRelease(
     "weakened-hoodtrap",
@@ -201,65 +369,107 @@ export const releases = [
         },
       ],
     },
+    false,
+    {
+      file: "/audios/wh.wav",
+      start: 59.3,
+      duration: 30,
+    },
   ),
 
-  createRelease("peso-morto", "PESO MORTO", "2026-02-13", "/covers/17.jpg", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/peso-morto",
-      },
-      {
-        url: "https://soundcloud.com/kamytt/peso-morto-slowed",
-        label: "SLOWED",
-      },
-    ],
-    bandlink: "https://band.link/pesomorto",
-    youtube: [
-      {
-        url: "https://www.youtube.com/watch?v=EQ9zwxmUTno",
-      },
-      {
-        url: "https://www.youtube.com/watch?v=ERFc5Al2zGY",
-        label: "SLOWED",
-      },
-    ],
-  }),
+  createRelease(
+    "peso-morto",
+    "PESO MORTO",
+    "2026-02-13",
+    "/covers/17.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/peso-morto",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/peso-morto-slowed",
+          label: "SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/pesomorto",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=EQ9zwxmUTno",
+        },
+        {
+          url: "https://www.youtube.com/watch?v=ERFc5Al2zGY",
+          label: "SLOWED",
+        },
+      ],
+    },
+    false,
+    {
+      file: "/audios/pm.wav",
+      start: 55,
+      duration: 30,
+    },
+  ),
 
-  createRelease("sugarjump", "SUGARJUMP!", "2026-03-13", "/covers/18.jpg", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/sugarjump",
-      },
-      {
-        url: "https://soundcloud.com/kamytt/sugarjump-slowed",
-        label: "SLOWED",
-      },
-    ],
-    bandlink: "https://band.link/sugarjump",
-    youtube: [
-      {
-        url: "https://www.youtube.com/watch?v=NhugV5rLVjg",
-      },
-      {
-        url: "https://www.youtube.com/watch?v=Zc4hu07ef38",
-        label: "SLOWED",
-      },
-    ],
-  }),
+  createRelease(
+    "sugarjump",
+    "SUGARJUMP!",
+    "2026-03-13",
+    "/covers/18.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/sugarjump",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/sugarjump-slowed",
+          label: "SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/sugarjump",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=NhugV5rLVjg",
+        },
+        {
+          url: "https://www.youtube.com/watch?v=Zc4hu07ef38",
+          label: "SLOWED",
+        },
+      ],
+    },
+    false,
+    {
+      file: "/audios/sugarjump.wav",
+      start: 46,
+      duration: 30,
+    },
+  ),
 
-  createRelease("young-winds", "YOUNG WINDS", "2026-05-01", "/covers/19.jpg", {
-    soundcloud: [
-      {
-        url: "https://soundcloud.com/kamytt/youngwinds",
-      },
-    ],
-    bandlink: "https://band.link/youngwinds",
-    youtube: [
-      {
-        url: "https://www.youtube.com/watch?v=wfPx60yQKr0",
-      },
-    ],
-  }),
+  createRelease(
+    "young-winds",
+    "YOUNG WINDS",
+    "2026-05-01",
+    "/covers/19.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/youngwinds",
+        },
+      ],
+      bandlink: "https://band.link/youngwinds",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=wfPx60yQKr0",
+        },
+      ],
+    },
+    false,
+    {
+      file: "/audios/yw.wav",
+      start: 69.3,
+      duration: 30,
+    },
+  ),
   createRelease(
     "saint-slowed",
     "SAINT (Slowed)",
@@ -277,6 +487,12 @@ export const releases = [
           url: "https://www.youtube.com/watch?v=AkAjfva_pgM&pp=ygUGa2FteXR0",
         },
       ],
+    },
+    false,
+    {
+      file: "/audios/saint-slowed.wav",
+      start: 98.4,
+      duration: 30,
     },
   ),
   createRelease("limerence", "LIMERENCE", "2026-06-26", "", {}, true),
