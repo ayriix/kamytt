@@ -1,5 +1,5 @@
 export const BandLinkIcon = ({
-  className = "w-6 h-6",
+  className = "w-4 h-4",
 }: {
   className?: string;
 }) => (

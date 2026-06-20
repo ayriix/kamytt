@@ -15,15 +15,15 @@ export const StreamingIcons = ({
     {/* BandLink */}
     <a
       href="#"
-      className="hover:text-white transition-colors"
+      className="hover:text-white transition-colors pointer-events-none"
       aria-label="BandLink"
     >
-      <BandLinkIcon className="w-5 h-5" />
+      <BandLinkIcon />
     </a>
     {/* SoundCloud */}
     <a
       href="#"
-      className="hover:text-white transition-colors"
+      className="hover:text-white transition-colors pointer-events-none"
       aria-label="SoundCloud"
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -38,8 +38,8 @@ export const StreamingIcons = ({
         }}
         className="
       hover:text-white transition-colors cursor-pointer
-      text-[12px] tracking-[0.15em] uppercase
-      text-white/40
+      text-[14px] tracking-[0.15em] uppercase
+      text-white/60
     "
         aria-label="More platforms"
       >

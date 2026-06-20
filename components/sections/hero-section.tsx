@@ -324,7 +324,7 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
 
                       <div className="flex items-center gap-4 text-white/50">
                         <span className="text-xs tracking-wider">
-                          → LISTEN ON
+                          → AVAILABLE ON
                         </span>
 
                         <StreamingIcons
