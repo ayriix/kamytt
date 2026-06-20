@@ -2,10 +2,9 @@ import { notFound } from "next/navigation";
 import { releases } from "@/data/releases";
 import Image from "next/image";
 // import { Vibrant } from "node-vibrant/node";
+import { GlowBackground } from "@/components/release/glow-background";
 
 import Link from "next/link";
-import path from "path";
-import { getGlow } from "@/lib/glow-cache";
 
 export default async function ReleasePage({
   params,
@@ -19,14 +18,6 @@ export default async function ReleasePage({
   if (!release) {
     notFound();
   }
-
-  const imagePath = path.join(
-    process.cwd(),
-    "public",
-    release.cover.replace(/^\/+/, ""),
-  );
-
-  const glow = await getGlow(slug, imagePath);
 
   const fragments = [
     "-top-8 -left-10 w-18 h-18 -rotate-12 opacity-35",
@@ -231,19 +222,7 @@ export default async function ReleasePage({
                 </div>
               ))}
             </div>
-            <div
-              className="
-    absolute inset-[-5%]
-    scale-110
-    rounded-full
-    blur-[120px]
-    opacity-25
-    pointer-events-none
-  "
-              style={{
-                backgroundColor: glow,
-              }}
-            />
+            <GlowBackground releaseId={release.id} src={release.cover} />
 
             <div
               className="
@@ -321,7 +300,7 @@ export default async function ReleasePage({
               </div>
             </a>
 
-            {release.links.soundcloud?.map((link, index) => (
+            {release.links.soundcloud?.map((link) => (
               <a
                 key={link.url}
                 href={link.url}
@@ -362,7 +341,7 @@ export default async function ReleasePage({
               </a>
             ))}
 
-            {release.links.youtube?.map((link, index) => (
+            {release.links.youtube?.map((link) => (
               <a
                 key={link.url}
                 href={link.url}
