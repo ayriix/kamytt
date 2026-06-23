@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Release } from "@/data/releases";
+import { ReleaseCountdown } from "./release-countdown";
 
 export const ReleaseCover = ({ release }: { release: Release }) => {
   return (
@@ -26,7 +27,7 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
                       mb-0 sm:mb-6
                       group
                       block
-
+                      
                       ${release.upcoming ? "pointer-events-none opacity-90" : ""}
                     `}
     >
@@ -78,24 +79,50 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
                             blur-3xl
                           "
           />
-
-          {/* center text */}
           <div
             className="
-                            absolute inset-0
-                            flex items-center justify-center
-                            "
+            absolute inset-0
+            flex items-center justify-center
+          "
           >
-            <span
+            <div
               className="
-                              text-[20px]
-                              lg:text-[36px]
-                              uppercase
-                              text-white/75
-                            "
+              text-center
+              flex flex-col
+              items-center
+              gap-2
+            "
             >
-              Soon
-            </span>
+              <span
+                className="
+                text-4xl
+                lg:text-5xl
+                opacity-70
+              "
+              >
+                🔒
+              </span>
+            </div>
+          </div>
+          <div
+            className="
+            absolute
+            left-1/2
+            bottom-3
+            -translate-x-1/2
+
+            px-3
+            py-0 sm:py-1
+            
+            rounded-full
+            border border-white/10
+            bg-black/50
+            backdrop-blur-md
+            whitespace-nowrap
+            min-w-max
+          "
+          >
+            <ReleaseCountdown date={release.date} />
           </div>
         </div>
       ) : (
@@ -106,11 +133,12 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="
-                            object-cover
-                            transition-transform
-                            duration-350
-                            group-hover:scale-102
-                          "
+            object-cover
+            transition-transform
+            duration-350
+            group-hover:scale-102
+            
+            "
           />
 
           <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />

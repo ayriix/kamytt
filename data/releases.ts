@@ -17,21 +17,29 @@ const createRelease = (
     }[];
   },
 
-  upcoming = false,
   preview?: {
     file: string;
     start: number;
     duration: number;
   },
-) => ({
-  id,
-  title,
-  date,
-  cover,
-  links,
-  upcoming,
-  preview,
-});
+) => {
+  const releaseDate = new Date(`${date}T00:00:00`);
+  const now = new Date();
+
+  const isReleased = releaseDate <= now;
+
+  return {
+    id,
+    title,
+    date,
+
+    cover: isReleased ? cover : "",
+    links: isReleased ? links : {},
+    preview: isReleased ? preview : undefined,
+
+    upcoming: !isReleased,
+  };
+};
 
 export const releases = [
   createRelease(
@@ -47,7 +55,6 @@ export const releases = [
       ],
       bandlink: "https://band.link/metamorphose4",
     },
-    false,
     {
       file: "/audios/metamorphosis.flac",
       start: 85.7,
@@ -63,7 +70,6 @@ export const releases = [
     {
       bandlink: "https://band.link/veyzuu",
     },
-    false,
     {
       file: "/audios/veyzuu.mp3",
       start: 105.6,
@@ -79,7 +85,6 @@ export const releases = [
     {
       bandlink: "https://band.link/wokizoo",
     },
-    false,
     {
       file: "/audios/wokizoo.mp3",
       start: 57.5,
@@ -95,7 +100,6 @@ export const releases = [
     {
       bandlink: "https://band.link/lastecho",
     },
-    false,
     {
       file: "/audios/lastecho.mp3",
       start: 70.6,
@@ -111,7 +115,6 @@ export const releases = [
     {
       bandlink: "https://band.link/cooked",
     },
-    false,
     {
       file: "/audios/cooked.mp3",
       start: 58.8,
@@ -127,7 +130,6 @@ export const releases = [
     {
       bandlink: "https://band.link/crunchcrunch",
     },
-    false,
     {
       file: "/audios/crunch.mp3",
       start: 46.7,
@@ -143,7 +145,6 @@ export const releases = [
     {
       bandlink: "https://band.link/absense",
     },
-    false,
     {
       file: "/audios/absence.mp3",
       start: 94.3,
@@ -159,7 +160,6 @@ export const releases = [
     {
       bandlink: "https://band.link/gl1de",
     },
-    false,
     {
       file: "/audios/glide.mp3",
       start: 50.6,
@@ -180,7 +180,6 @@ export const releases = [
       ],
       bandlink: "https://band.link/solarr",
     },
-    false,
     {
       file: "/audios/solar.mp3",
       start: 43.4,
@@ -201,7 +200,6 @@ export const releases = [
       ],
       bandlink: "https://band.link/eclipsephonk",
     },
-    false,
     {
       file: "/audios/eclipse.mp3",
       start: 72.3,
@@ -222,7 +220,6 @@ export const releases = [
       ],
       bandlink: "https://band.link/eclipseslowed",
     },
-    false,
     {
       file: "/audios/eclipse-slowed.wav",
       start: 90.3,
@@ -247,7 +244,6 @@ export const releases = [
       ],
       bandlink: "https://band.link/supremacy",
     },
-    false,
     {
       file: "/audios/supremacy.wav",
       start: 59,
@@ -291,7 +287,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/perasvoando.wav",
       start: 57.4,
@@ -317,7 +312,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/moondust.wav",
       start: 74.3,
@@ -343,7 +337,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/saint.wav",
       start: 78.2,
@@ -369,7 +362,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/wh.wav",
       start: 59.3,
@@ -403,7 +395,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/pm.wav",
       start: 55,
@@ -437,7 +428,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/sugarjump.wav",
       start: 46,
@@ -463,7 +453,6 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/yw.wav",
       start: 69.3,
@@ -488,14 +477,102 @@ export const releases = [
         },
       ],
     },
-    false,
     {
       file: "/audios/saint-slowed.wav",
       start: 98.4,
       duration: 30,
     },
   ),
-  createRelease("limerence", "LIMERENCE", "2026-06-26", "", {}, true),
+  createRelease(
+    "limerence",
+    "LIMERENCE",
+    "2026-06-26",
+    "/covers/21.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/limerence",
+        },
+      ],
+
+      bandlink: "https://band.link/limerence",
+
+      youtube: [
+        {
+          url: "https://youtube.com/...",
+        },
+      ],
+    },
+    {
+      file: "/audios/limerence.wav",
+      start: 1,
+      duration: 30,
+    },
+  ),
+  createRelease(
+    "banka-parilka",
+    "BANKA PARILKA (HARDTEKK)",
+    "2026-07-10",
+    "/covers/22.png",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/bankaparilka",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/bankaparilkaslowed",
+          label: "SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/bankaparilka",
+      youtube: [
+        {
+          url: "https://www.youtube.com/...",
+        },
+        {
+          url: "https://www.youtube.com/...",
+          label: "SLOWED",
+        },
+      ],
+    },
+    {
+      file: "/audios/bankaparilka.wav",
+      start: 1,
+      duration: 30,
+    },
+  ),
+  createRelease(
+    "clowntekk",
+    "CLOWNTEKK",
+    "2026-07-17",
+    "/covers/23.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/clowntekk",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/clowntekk-slowed",
+          label: "SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/clowntekk",
+      youtube: [
+        {
+          url: "https://www.youtube.com/...",
+        },
+        {
+          url: "https://www.youtube.com/...",
+          label: "SLOWED",
+        },
+      ],
+    },
+    {
+      file: "/audios/clowntekk.wav",
+      start: 1,
+      duration: 30,
+    },
+  ),
 ];
 
 export type Release = ReturnType<typeof createRelease>;

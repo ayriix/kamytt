@@ -6,11 +6,13 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ReleaseSection } from "@/components/sections/releases-section";
 
+const LOADER_DURATION = 900;
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [highlightedCard, setHighlightedCard] = useState<string | null>(null);
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 900);
+    const timer = setTimeout(() => setIsLoading(false), LOADER_DURATION);
     return () => clearTimeout(timer);
   }, []);
 
