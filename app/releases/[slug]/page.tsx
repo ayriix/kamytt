@@ -1,10 +1,45 @@
 import { notFound } from "next/navigation";
 import { releases } from "@/data/releases";
 import Image from "next/image";
-// import { Vibrant } from "node-vibrant/node";
 import { GlowBackground } from "@/components/release/glow-background";
 
 import Link from "next/link";
+import type { Metadata } from "next";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const release = releases.find((r) => r.id === slug);
+
+  if (!release) {
+    return {
+      title: "kamytt.",
+    };
+  }
+
+  return {
+    title: `${release.title} | kamytt.`,
+
+    description: `${release.title}. Music release available on all streaming platforms.`,
+
+    openGraph: {
+      title: `${release.title} | kamytt.`,
+      description: `${release.title}`,
+      images: [
+        {
+          url: release.cover,
+        },
+      ],
+    },
+
+    alternates: {
+      canonical: `https://kamytt.vercel.app/releases/${release.id}`,
+    },
+  };
+}
 
 export default async function ReleasePage({
   params,
@@ -212,7 +247,7 @@ export default async function ReleasePage({
       `}
                 >
                   <Image
-                    src={release.cover}
+                    src={release.title}
                     alt=""
                     fill
                     className="object-cover"

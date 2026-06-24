@@ -15,6 +15,23 @@ export const metadata: Metadata = {
 
   title: "kamytt.",
   description: "Electronic music artist",
+  keywords: [
+    "kamytt",
+    "hardtekk",
+    "hardtekk remix",
+    "electronic music",
+    "hard dance",
+    "phonk",
+    "tekk",
+    "music producer",
+    "remixes",
+    "funk",
+    "brazilian phonk",
+    "brazilian funk",
+    "baile funk",
+    "jumpstyle",
+    "hardstyle",
+  ],
 
   openGraph: {
     title: "kamytt.",
@@ -39,6 +56,14 @@ export const metadata: Metadata = {
     title: "kamytt.",
     description: "Electronic music artist",
     images: ["https://kamytt.vercel.app/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   icons: {
     icon: "/favicon.ico",

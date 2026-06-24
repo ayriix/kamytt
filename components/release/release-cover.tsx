@@ -45,7 +45,6 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
                           after:absolute
                           after:inset-0
                           after:backdrop-blur-3xl
-
                           overflow-hidden
                         "
         >
@@ -54,13 +53,9 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
             className="
                             absolute
                             -top-10 -left-10
-
                             w-40 h-40
-
                             rounded-full
-
                             bg-white/8
-
                             blur-3xl
                           "
           />
@@ -69,13 +64,9 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
             className="
                             absolute
                             bottom-0 right-0
-
                             w-32 h-32
-
                             rounded-full
-
                             bg-white/5
-
                             blur-3xl
                           "
           />
@@ -95,8 +86,9 @@ export const ReleaseCover = ({ release }: { release: Release }) => {
             >
               <span
                 className="
-                text-4xl
-                lg:text-5xl
+                text-2xl
+                sm:text-5xl
+                md:text-6xl
                 opacity-70
               "
               >

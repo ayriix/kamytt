@@ -505,15 +505,15 @@ export const releases = [
     },
     {
       file: "/audios/limerence.wav",
-      start: 1,
+      start: 81.3,
       duration: 30,
     },
   ),
   createRelease(
     "banka-parilka",
-    "BANKA PARILKA (HARDTEKK)",
+    "БАНЬКА ПАРИЛКА (HARDTEKK)",
     "2026-07-10",
-    "/covers/22.png",
+    "/covers/22.jpg",
     {
       soundcloud: [
         {
@@ -537,7 +537,7 @@ export const releases = [
     },
     {
       file: "/audios/bankaparilka.wav",
-      start: 1,
+      start: 44.8,
       duration: 30,
     },
   ),
@@ -569,7 +569,7 @@ export const releases = [
     },
     {
       file: "/audios/clowntekk.wav",
-      start: 1,
+      start: 24,
       duration: 30,
     },
   ),

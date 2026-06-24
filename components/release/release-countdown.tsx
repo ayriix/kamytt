@@ -41,7 +41,6 @@ export const ReleaseCountdown = ({ date }: { date: string }) => {
         leading-6
         tracking-[0.18em]
         sm:tracking-[0.25em]
-        
         text-white/80
         whitespace-nowrap
     "
