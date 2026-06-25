@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 
   title: "kamytt.",
   description: "Electronic music artist",
+  verification: {
+    google: "zFUaQSLyUbGuwr5HhkWSAfhgV-9mlZPOny2642C3qRA",
+  },
   keywords: [
     "kamytt",
     "hardtekk",
