@@ -5,13 +5,13 @@ import { GlowBackground } from "@/components/release/glow-background";
 
 import Link from "next/link";
 import type { Metadata } from "next";
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-
   const release = releases.find((r) => r.id === slug);
 
   if (!release) {
@@ -20,17 +20,41 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    title: `${release.title} | kamytt.`,
+  const trackTitle = release.title;
+  const defaultKeywords = [
+    "hardtekk",
+    "hardtekk remix",
+    "tekk",
+    "phonk",
+    "remix",
+    "electronic music",
+    "kamytt",
+    "synthwave",
+    "jumpstyle",
+    "edm",
+  ];
 
-    description: `${release.title}. Music release available on all streaming platforms.`,
+  const seoDescription = `${trackTitle} by kamytt. Listen to this hardtekk / electronic music release and remixes on all streaming platforms.`;
+
+  return {
+    title: `${trackTitle} | kamytt.`,
+    description: seoDescription,
+    keywords: [
+      trackTitle.toLowerCase(),
+      `${trackTitle.toLowerCase()} remix`,
+      ...defaultKeywords,
+    ],
 
     openGraph: {
-      title: `${release.title} | kamytt.`,
-      description: `${release.title}`,
+      title: `${trackTitle} | kamytt.`,
+      description: `${trackTitle}`,
+      url: `https://kamytt.vercel.app/releases/${release.id}`,
+      siteName: "kamytt.",
+      type: "music.song",
       images: [
         {
           url: release.cover,
+          alt: `${trackTitle} cover art`,
         },
       ],
     },
@@ -235,24 +259,22 @@ export default async function ReleasePage({
                 <div
                   key={i}
                   className={`
-        absolute
-        ${fragment}
-
-        overflow-hidden
-        rounded-xl
-        border border-white/10
-        blur-[0.4px]
-        transition-all duration-700
-        group-hover:scale-105
-      `}
+                  absolute
+                  ${fragment}
+                  overflow-hidden
+                  rounded-xl
+                  border border-white/10
+                  blur-[0.4px]
+                  transition-all duration-700
+                  group-hover:scale-105
+                `}
                 >
                   <Image
-                    src={release.title}
-                    alt=""
+                    src={release.cover}
+                    alt={`${release.title} fragment ${i + 1}`}
                     fill
                     className="object-cover"
                   />
-
                   <div className="absolute inset-0 bg-black/20" />
                 </div>
               ))}
@@ -261,23 +283,23 @@ export default async function ReleasePage({
 
             <div
               className="
-    relative
-    w-60
-    sm:w-68
-    md:w-85
-    lg:w-105
-    aspect-square
-    overflow-hidden
-    rounded-4xl
-    border border-white/10
-    -rotate-4
-    hover:rotate-0
-    transition-transform duration-500
-  "
+              relative
+              w-60
+              sm:w-68
+              md:w-85
+              lg:w-105
+              aspect-square
+              overflow-hidden
+              rounded-4xl
+              border border-white/10
+              -rotate-4
+              hover:rotate-0
+              transition-transform duration-500
+            "
             >
               <Image
                 src={release.cover}
-                alt={release.title}
+                alt={`${release.title} — Hardtekk / Phonk / Jumpstyle / Funk / Electronic music release`}
                 fill
                 priority
                 className="object-cover"
