@@ -56,7 +56,7 @@ export const ReleaseCover = ({ release, index }: ReleaseCoverProps) => {
             alt={`${release.title} cover`}
             fill
             priority={index === 0}
-            sizes="(max-width: 640px) 128px, (max-width: 1024px) 220px, 280px"
+            unoptimized
             className="object-cover transition-transform duration-350 group-hover:scale-102"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
