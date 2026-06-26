@@ -35,7 +35,7 @@ export const ReleaseCountdown = ({ date }: { date: string }) => {
   }, [date]);
 
   return (
-    <span className="text-[8px] sm:text-[18px] leading-6 sm:leading-10 tracking-[0.18em] sm:tracking-[0.25em] text-white/80 whitespace-nowrap min-w-max">
+    <span className="text-[8px] sm:text-[18px] leading-6 sm:leading-12 tracking-[0.18em] sm:tracking-[0.25em] text-white/80 whitespace-nowrap min-w-max">
       {timeLeft}
     </span>
   );

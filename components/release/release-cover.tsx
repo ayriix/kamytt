@@ -45,7 +45,7 @@ export const ReleaseCover = ({ release, index }: ReleaseCoverProps) => {
             </div>
           </div>
 
-          <div className="absolute left-1/2 bottom-3 -translate-x-1/2 px-3 py-0 sm:py-1 mb-0 sm:mb-4 rounded-full border border-white/10 bg-black/50 backdrop-blur-md whitespace-nowrap min-w-max">
+          <div className="absolute left-1/2 bottom-3 -translate-x-1/2 px-3 sm:px-6 py-0 sm:py-1 mb-0 sm:mb-4 rounded-full border border-white/10 bg-black/50 backdrop-blur-md whitespace-nowrap min-w-max">
             <ReleaseCountdown date={release.date} />
           </div>
         </div>

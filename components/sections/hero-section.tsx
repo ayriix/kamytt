@@ -71,6 +71,7 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
           sizes="100vw"
           className="object-cover object-[60%_20%] sm:object-[55%_20%] lg:object-[50%_20%] scale-100 sm:scale-105"
         />
+
         <div className="absolute inset-0 bg-black/30 z-1" />
         <div className="absolute inset-0 vhs-scanlines z-2" />
         <div className="vhs-band z-3" />
@@ -100,7 +101,7 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
               }
               className="text-xs tracking-[0.3em] text-white/80 hover:text-white transition-colors uppercase cursor-pointer bg-transparent border-none"
             >
-              Contact
+              Contacts
             </button>
           </nav>
         </header>
