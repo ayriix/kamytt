@@ -7,11 +7,13 @@ export const ReleaseCountdown = ({ date }: { date: string }) => {
 
   useEffect(() => {
     const update = () => {
-      const releaseDate = new Date(`${date}T00:00:00`);
+      const dateString = date.length === 10 ? `${date}T07:00:00` : date;
+
+      const releaseDate = new Date(dateString);
       const diff = releaseDate.getTime() - Date.now();
 
       if (diff <= 0) {
-        setTimeLeft("0D 00H 00M");
+        setTimeLeft("00D 00H 00M");
         return;
       }
 
@@ -19,16 +21,15 @@ export const ReleaseCountdown = ({ date }: { date: string }) => {
       const hours = Math.floor((diff % 86400000) / 3600000);
       const minutes = Math.floor((diff % 3600000) / 60000);
 
-      setTimeLeft(
-        `${days.toString().padStart(2)}D
-         ${hours.toString().padStart(2, "0")}H
-         ${minutes.toString().padStart(2, "0")}M`,
-      );
+      const d = days.toString().padStart(2);
+      const h = hours.toString().padStart(2, "0");
+      const m = minutes.toString().padStart(2, "0");
+
+      setTimeLeft(`${d}D ${h}H ${m}M`);
     };
 
     update();
-
-    const interval = setInterval(update, 1000);
+    const interval = setInterval(update, 60000);
 
     return () => clearInterval(interval);
   }, [date]);
@@ -43,7 +44,8 @@ export const ReleaseCountdown = ({ date }: { date: string }) => {
         sm:tracking-[0.25em]
         text-white/80
         whitespace-nowrap
-    "
+        min-w-max
+      "
     >
       {timeLeft}
     </span>

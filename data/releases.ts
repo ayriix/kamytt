@@ -23,7 +23,7 @@ const createRelease = (
     duration: number;
   },
 ) => {
-  const releaseDate = new Date(`${date}T00:00:00`);
+  const releaseDate = new Date(`${date}T07:00:00`);
   const now = new Date();
 
   const isReleased = releaseDate <= now;
@@ -499,7 +499,7 @@ export const releases = [
 
       youtube: [
         {
-          url: "https://youtube.com/...",
+          url: "https://www.youtube.com/watch?v=Fow6eJdOdh0",
         },
       ],
     },
