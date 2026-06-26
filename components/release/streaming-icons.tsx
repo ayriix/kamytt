@@ -28,7 +28,6 @@ export const StreamingIcons = React.memo(
 
     return (
       <div className="flex items-center gap-3">
-        {/* 3. Семантика: заменяем заблокированные <a> с href="#" на валидные <span>, так как это просто декоративные иконки */}
         <span className="text-white/40" aria-label="BandLink">
           <BandLinkIcon />
         </span>

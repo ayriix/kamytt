@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Vibrant } from "node-vibrant/browser";
 
 type GlowBackgroundProps = {
@@ -9,18 +9,17 @@ type GlowBackgroundProps = {
 };
 
 export const GlowBackground = ({ releaseId, src }: GlowBackgroundProps) => {
-  const [glow, setGlow] = useState(() => {
-    if (typeof window === "undefined") {
-      return "#ffffff";
-    }
-
-    return localStorage.getItem(`glow-${releaseId}`) ?? "#ffffff";
-  });
+  const [glow, setGlow] = useState("#444444");
+  const [, startTransition] = useTransition();
 
   useEffect(() => {
     const key = `glow-${releaseId}`;
+    const cachedColor = localStorage.getItem(key);
 
-    if (localStorage.getItem(key)) {
+    if (cachedColor) {
+      startTransition(() => {
+        setGlow(cachedColor);
+      });
       return;
     }
 
@@ -32,10 +31,12 @@ export const GlowBackground = ({ releaseId, src }: GlowBackgroundProps) => {
         if (cancelled) return;
 
         const color =
-          palette.DarkVibrant?.hex || palette.Vibrant?.hex || "#ffffff";
+          palette.DarkVibrant?.hex || palette.Vibrant?.hex || "#444444";
 
         localStorage.setItem(key, color);
-        setGlow(color);
+        startTransition(() => {
+          setGlow(color);
+        });
       })
       .catch(() => {});
 
@@ -46,15 +47,7 @@ export const GlowBackground = ({ releaseId, src }: GlowBackgroundProps) => {
 
   return (
     <div
-      className="
-        absolute inset-[-5%]
-        scale-110
-        rounded-full
-        blur-[120px]
-        opacity-25
-        pointer-events-none
-        transition-colors duration-700
-      "
+      className="absolute inset-[-5%] scale-110 rounded-full blur-[120px] opacity-25 pointer-events-none transition-colors duration-700"
       style={{
         backgroundColor: glow,
       }}

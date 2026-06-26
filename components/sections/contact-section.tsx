@@ -4,75 +4,23 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="
-            relative isolate
-            min-h-screen
-            flex flex-col
-            items-center
-            justify-between
-            px-6 sm:px-12
-            py-10
-          "
+      className="relative isolate min-h-screen flex flex-col items-center justify-between px-6 sm:px-12 py-10"
     >
       <div className="relative z-10 w-full flex-1 flex flex-col">
-        <h2
-          className="
-                text-xs
-                tracking-[0.3em]
-                text-white/50
-                uppercase
-                text-center
-                mb-16
-              "
-        >
+        <h2 className="text-xs tracking-[0.3em] text-white/50 uppercase text-center mb-16">
           Contacts
         </h2>
 
         <div className="flex-1 flex items-center justify-center">
-          <div
-            className="
-                  flex flex-col
-                  sm:flex-row
-                  items-center
-                  justify-center
-                  gap-12 sm:gap-16 md:gap-40
-                "
-          >
-            {/* Telegram */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-16 md:gap-40">
             <a
               href="https://t.me/bxxxnker"
               target="_blank"
               rel="noopener noreferrer"
-              className="
-    group relative
-    flex flex-col items-center
-    text-white/40
-    hover:text-white
-    active:text-white
-    transition-all
-    duration-500
-    hover:scale-110
-    active:scale-110
-  "
+              className="group relative flex flex-col items-center text-white/40 hover:text-white active:text-white transition-all duration-500 hover:scale-110 active:scale-110"
               aria-label="Telegram"
             >
-              {/* label */}
-              <span
-                className="
-      absolute -top-6 lg:-top-8
-      text-xs tracking-[0.25em]
-      uppercase
-      text-white/80
-      opacity-0
-      translate-y-2
-      transition-all duration-300
-      pointer-events-none
-      group-hover:opacity-100
-      group-hover:translate-y-0
-      group-active:opacity-100
-      group-active:translate-y-0
-    "
-              >
+              <span className="absolute -top-6 lg:-top-8 text-xs tracking-[0.25em] uppercase text-white/80 opacity-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0">
                 Telegram
               </span>
 
@@ -85,39 +33,12 @@ export const ContactSection = () => {
               </svg>
             </a>
 
-            {/* Email */}
             <a
               href="mailto:kamytt@ya.ru"
-              className="
-    group relative
-    flex flex-col items-center
-    text-white/40
-    hover:text-white
-    active:text-white
-    transition-all
-    duration-500
-    hover:scale-110
-    active:scale-110
-  "
+              className="group relative flex flex-col items-center text-white/40 hover:text-white active:text-white transition-all duration-500 hover:scale-110 active:scale-110"
               aria-label="Email"
             >
-              {/* label */}
-              <span
-                className="
-      absolute -top-6 lg:-top-8
-      text-xs tracking-[0.25em]
-      uppercase
-      text-white/80
-      opacity-0
-      translate-y-2
-      transition-all duration-300
-      pointer-events-none
-      group-hover:opacity-100
-      group-hover:translate-y-0
-      group-active:opacity-100
-      group-active:translate-y-0
-    "
-              >
+              <span className="absolute -top-6 lg:-top-8 text-xs tracking-[0.25em] uppercase text-white/80 opacity-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0">
                 Email
               </span>
 
@@ -138,18 +59,9 @@ export const ContactSection = () => {
           </span>
         </footer>
       </div>
+
       {/* top fade */}
-      <div
-        className="
-              absolute top-0 left-0
-              w-full h-40
-              bg-linear-to-b
-              from-[#080808]
-              to-transparent
-              pointer-events-none
-              z-20
-            "
-      />
+      <div className="absolute top-0 left-0 w-full h-40 bg-linear-to-b from-[#080808] to-transparent pointer-events-none z-20" />
     </section>
   );
 };

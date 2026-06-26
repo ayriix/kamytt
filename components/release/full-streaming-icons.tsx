@@ -8,12 +8,7 @@ export const FullStreamingIcons = ({
 }: {
   release: (typeof releases)[number];
 }) => (
-  <div
-    className="
-    flex flex-wrap items-center gap-x-4 gap-y-2
-    "
-  >
-    {/* BandLink */}
+  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
     <a
       href={release.links.bandlink}
       target="_blank"
@@ -23,9 +18,7 @@ export const FullStreamingIcons = ({
     >
       <BandLinkIcon className="w-6 h-6" />
     </a>
-
-    {/* SoundCloud */}
-    {release.links.soundcloud && (
+    {release.links.soundcloud && release.links.soundcloud.length > 0 && (
       <ExpandableLinks
         title="SoundCloud"
         links={release.links.soundcloud}
@@ -33,8 +26,7 @@ export const FullStreamingIcons = ({
       />
     )}
 
-    {/* YouTube */}
-    {release.links.youtube && (
+    {release.links.youtube && release.links.youtube.length > 0 && (
       <ExpandableLinks
         title="YouTube"
         links={release.links.youtube}
