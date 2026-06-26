@@ -25,7 +25,6 @@ const createRelease = (
 ) => {
   const releaseDate = new Date(`${date}T07:00:00`);
   const now = new Date();
-
   const isReleased = releaseDate <= now;
 
   return {
@@ -33,9 +32,9 @@ const createRelease = (
     title,
     date,
 
-    cover: isReleased ? cover : "",
-    links: isReleased ? links : {},
-    preview: isReleased ? preview : undefined,
+    cover,
+    links,
+    preview,
 
     upcoming: !isReleased,
   };

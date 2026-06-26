@@ -25,7 +25,10 @@ export const ReleaseCard = React.memo(
     playingId,
     playPreview,
   }: ReleaseCardProps) => {
-    const preview = release.preview;
+    const releaseDate = new Date(`${release.date}T07:00:00`);
+    const isReleased = releaseDate <= new Date();
+    const preview = isReleased ? release.preview : undefined;
+
     const isHighlighted = highlightedCard === release.id;
     const isPlaying = playingId === release.id;
 
@@ -98,11 +101,15 @@ export const ReleaseCard = React.memo(
     );
   },
   (prevProps, nextProps) => {
+    const releaseDate = new Date(`${nextProps.release.date}T07:00:00`);
+    const isReleased = releaseDate <= new Date();
+
     return (
       prevProps.release.id === nextProps.release.id &&
       prevProps.playingId === nextProps.playingId &&
       (prevProps.highlightedCard === prevProps.release.id) ===
-        (nextProps.highlightedCard === nextProps.release.id)
+        (nextProps.highlightedCard === nextProps.release.id) &&
+      prevProps.release.upcoming === isReleased
     );
   },
 );
