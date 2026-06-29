@@ -117,7 +117,7 @@
 }
 @supports (color: color-mix(in oklab, red, red)) {
   :root {
-    --border: color-mix(in oklab, var(--border-raw) 60%, transparent);
+    --border: color-mix(in oklab, var(--border-raw) 40%, transparent);
   }
   .dark {
     --border: color-mix(in oklab, var(--border-raw) 10%, transparent);
