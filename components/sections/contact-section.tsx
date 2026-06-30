@@ -1,6 +1,21 @@
 "use client";
 
+import { useState } from "react";
+
 export const ContactSection = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = () => {
+    const email = "kamytt@ya.ru";
+
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    });
+  };
+
   return (
     <section
       id="contact"
@@ -13,6 +28,7 @@ export const ContactSection = () => {
 
         <div className="flex-1 flex items-center justify-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-16 md:gap-40">
+            {/* Telegram */}
             <a
               href="https://t.me/bxxxnker"
               target="_blank"
@@ -33,13 +49,20 @@ export const ContactSection = () => {
               </svg>
             </a>
 
-            <a
-              href="mailto:kamytt@ya.ru"
-              className="group relative flex flex-col items-center text-white/40 hover:text-white active:text-white transition-all duration-500 hover:scale-110 active:scale-110"
-              aria-label="Email"
+            {/* Email */}
+            <button
+              onClick={handleEmailClick}
+              className="group relative flex flex-col items-center text-white/40 hover:text-white active:text-white transition-all duration-500 hover:scale-110 active:scale-110 bg-transparent border-none p-0 cursor-pointer outline-none"
+              aria-label="Copy Email"
             >
-              <span className="absolute -top-6 lg:-top-8 text-xs tracking-[0.25em] uppercase text-white/80 opacity-0 translate-y-2 transition-all duration-300 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0">
-                Email
+              <span
+                className={`absolute -top-6 lg:-top-8 text-xs tracking-[0.25em] uppercase pointer-events-none transition-all duration-300 ${
+                  copied
+                    ? "text-white opacity-100 translate-y-0 font-medium"
+                    : "text-white/80 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0"
+                }`}
+              >
+                {copied ? "Copied" : "Email"}
               </span>
 
               <svg
@@ -49,7 +72,7 @@ export const ContactSection = () => {
               >
                 <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-4 7.75h8c.69 0 1.25.56 1.25 1.25v6c0 .69-.56 1.25-1.25 1.25H8c-.69 0-1.25-.56-1.25-1.25V9c0-.69.56-1.25 1.25-1.25zm7.1 1.6-3.1 2.33-3.1-2.33c-.27-.2-.65-.15-.85.12-.2.27-.15.65.12.85l3.46 2.6c.22.17.53.17.75 0l3.46-2.6c.27-.2.32-.58.12-.85-.2-.27-.58-.32-.85-.12z" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
 

@@ -53,8 +53,10 @@ export const ReleaseCard = React.memo(
       <div
         id={release.id}
         onClick={handleCardClick}
-        className={`relative flex flex-row sm:flex-col items-start gap-5 sm:gap-0 p-4 sm:p-5 -m-4 sm:-m-5 rounded-3xl transition-all duration-350 ease-out ${
-          isHighlighted ? "bg-white/8 scale-[1.02]" : "bg-transparent scale-100"
+        className={`relative flex flex-row sm:flex-col items-start gap-5 sm:gap-0 p-4 sm:p-5 -m-4 sm:-m-5 rounded-3xl scale-100 ease-out cursor-pointer transition-all ${
+          isHighlighted
+            ? "bg-white/10 scale-[1.01] duration-150"
+            : "bg-transparent [@media(hover:hover)]:hover:bg-white/4 duration-700"
         }`}
       >
         <ReleaseCover release={release} index={index} />
