@@ -523,7 +523,7 @@ export const releases = [
           label: "SLOWED",
         },
       ],
-      bandlink: "https://band.link/bankaparilka",
+      bandlink: "https://band.link/JHtFw",
       youtube: [
         {
           url: "https://www.youtube.com/watch?v=FElO9RNmmMo",
