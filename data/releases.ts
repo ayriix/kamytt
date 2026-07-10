@@ -526,10 +526,10 @@ export const releases = [
       bandlink: "https://band.link/bankaparilka",
       youtube: [
         {
-          url: "https://www.youtube.com/...",
+          url: "https://www.youtube.com/watch?v=FElO9RNmmMo",
         },
         {
-          url: "https://www.youtube.com/...",
+          url: "https://www.youtube.com/watch?v=6eHLEZ3Z1TM",
           label: "SLOWED",
         },
       ],
@@ -556,15 +556,6 @@ export const releases = [
         },
       ],
       bandlink: "https://band.link/clowntekk",
-      youtube: [
-        {
-          url: "https://www.youtube.com/...",
-        },
-        {
-          url: "https://www.youtube.com/...",
-          label: "SLOWED",
-        },
-      ],
     },
     {
       file: "/audios/clowntekk.wav",
