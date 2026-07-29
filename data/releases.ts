@@ -31,7 +31,6 @@ const createRelease = (
     id,
     title,
     date,
-
     cover,
     links,
     preview,
@@ -560,6 +559,33 @@ export const releases = [
     {
       file: "/audios/clowntekk.wav",
       start: 24,
+      duration: 30,
+    },
+  ),
+  createRelease(
+    "hamstertekk",
+    "HAMSTERTEKK",
+    "2026-08-28",
+    "/covers/24.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/hamstertekk",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/hamstertekk-slowed",
+          label: "SLOWED",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/hamstertekk-ultraslowed",
+          label: "ULTRA SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/hamstertekk",
+    },
+    {
+      file: "/audios/hamstertekk.wav",
+      start: 48,
       duration: 30,
     },
   ),
