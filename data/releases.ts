@@ -578,7 +578,7 @@ export const releases = [
         },
         {
           url: "https://soundcloud.com/kamytt/hamstertekk-ultraslowed",
-          label: "ULTRA SLOWED",
+          label: "ULTRASLOWED",
         },
       ],
       bandlink: "https://band.link/hamstertekk",
@@ -618,7 +618,7 @@ export const releases = [
         },
         {
           url: "https://soundcloud.com/kamytt/plenka",
-          label: "ULTRA SLOWED",
+          label: "ULTRASLOWED",
         },
       ],
       bandlink: "https://band.link/oQaRW",
