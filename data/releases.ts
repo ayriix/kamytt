@@ -582,10 +582,63 @@ export const releases = [
         },
       ],
       bandlink: "https://band.link/hamstertekk",
+      youtube: [
+        {
+          url: "https://www.youtube.com/watch?v=WDldyQzd9hQ",
+        },
+        {
+          url: "https://www.youtube.com/watch?v=13lEB6-_Rsg",
+          label: "SLOWED",
+        },
+        {
+          url: "https://www.youtube.com/watch?v=3hwl4DcJ7GA",
+          label: "ULTRASLOWED",
+        },
+      ],
     },
     {
       file: "/audios/hamstertekk.wav",
       start: 48,
+      duration: 30,
+    },
+  ),
+  createRelease(
+    "closed",
+    "CLOSED HARDTEKK",
+    "2026-10-09",
+    "/covers/24.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/closed-hardtekk",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/closed-slowed",
+          label: "SLOWED",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/plenka",
+          label: "ULTRA SLOWED",
+        },
+      ],
+      bandlink: "https://band.link/oQaRW",
+      youtube: [
+        {
+          url: "https://youtu.be/TqP0BjYbRII?si=IVBQUnak07tXv6gW",
+        },
+        {
+          url: "https://youtu.be/9yMODhs5Z9c?si=dGkPDwXZKCn8ErO1",
+          label: "SLOWED",
+        },
+        {
+          url: "https://youtu.be/FZcRkiL1gdI?si=YMmQIPoRgKICUBcs",
+          label: "ULTRASLOWED",
+        },
+      ],
+    },
+    {
+      file: "/audios/closed.wav",
+      start: 70,
       duration: 30,
     },
   ),
