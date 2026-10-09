@@ -606,7 +606,7 @@ export const releases = [
     "closed",
     "CLOSED HARDTEKK",
     "2026-10-09",
-    "/covers/24.jpg",
+    "/covers/25.jpg",
     {
       soundcloud: [
         {
