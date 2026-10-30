@@ -139,6 +139,11 @@ export default async function ReleasePage({
                   SUGAR <span className="hidden sm:inline">JUMP!</span>
                   <span className="block mt-1 sm:hidden">JUMP!</span>
                 </>
+              ) : release.id === "hamstertekk" ? (
+                <>
+                  HAMSTER<span className="hidden sm:inline">TEKK</span>
+                  <span className="block mt-1 sm:hidden">TEKK</span>
+                </>
               ) : (
                 release.title
               )}

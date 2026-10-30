@@ -3,45 +3,87 @@
 import { releases } from "@/data/releases";
 import { StreamingIcons } from "../release/streaming-icons";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type HeroSectionProps = {
   setHighlightedCard: (id: string | null) => void;
 };
 
-export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
+const GLYPHS = "01!@#$%k&*?_~/m\\<>[]{}t";
 
+const GLITCH_COLORS = ["#D6D3D1", "#A8A29E", "#737373", "#F5F5F5", "#525252"];
+
+export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
   const fullText = "kamytt";
+  const [displayText, setDisplayText] = useState(fullText);
+  const [glitchStyle, setGlitchStyle] = useState<React.CSSProperties>({});
+
+  const frameRef = useRef(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let frame = 0;
+    const totalFrames = 180;
 
-    if (!isDeleting) {
-      if (displayText.length < fullText.length) {
-        timeout = setTimeout(() => {
-          setDisplayText(fullText.slice(0, displayText.length + 1));
-        }, 150);
-      } else {
-        timeout = setTimeout(() => {
-          setIsDeleting(true);
-        }, 1700);
-      }
-    } else {
-      if (displayText.length > 0) {
-        timeout = setTimeout(() => {
-          setDisplayText(displayText.slice(0, -1));
-        }, 80);
-      } else {
-        timeout = setTimeout(() => {
-          setIsDeleting(false);
-        }, 500);
-      }
-    }
+    const scramble = () => {
+      let output = "";
+      let complete = 0;
 
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting]);
+      for (let i = 0; i < fullText.length; i++) {
+        const revealThreshold = Math.floor(
+          (i / fullText.length) * (totalFrames * 0.2),
+        );
+
+        if (frame >= revealThreshold + 10) {
+          output += fullText[i];
+          complete++;
+        } else {
+          const randomChar = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+          output += randomChar;
+        }
+      }
+
+      setDisplayText(output);
+
+      if (Math.random() > 0.3) {
+        const dirX = Math.random() > 0.5 ? 1 : -1;
+        const dirY = Math.random() > 0.5 ? 1 : -1;
+
+        const dist1 = Math.floor(Math.random() * 4) + 2;
+        const dist2 = Math.floor(Math.random() * 3) + 1;
+
+        const color1 =
+          GLITCH_COLORS[Math.floor(Math.random() * GLITCH_COLORS.length)];
+        const color2 =
+          GLITCH_COLORS[Math.floor(Math.random() * GLITCH_COLORS.length)];
+
+        setGlitchStyle({
+          textShadow: `${dirX * dist1}px ${dirY * dist1}px 0 ${color1}, ${-dirX * dist2}px ${-dirY * dist2}px 0 ${color2}`,
+          transform: `translate(${dirX * 0.25}px, ${dirY * 0.25}px) skewX(${dirX * 1.5}deg)`,
+        });
+      } else {
+        setGlitchStyle({});
+      }
+
+      if (complete < fullText.length) {
+        frame++;
+        frameRef.current = requestAnimationFrame(scramble);
+      } else {
+        setGlitchStyle({});
+        timeoutRef.current = setTimeout(() => {
+          frame = 0;
+          scramble();
+        }, 2300);
+      }
+    };
+
+    scramble();
+
+    return () => {
+      cancelAnimationFrame(frameRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [fullText]);
 
   const scrollToRelease = (id: string) => {
     const element = document.getElementById(id);
@@ -64,19 +106,19 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/jumpstyle2.jpg"
+          src="/bg.png"
           alt="cover"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[60%_20%] sm:object-[55%_20%] lg:object-[50%_20%] scale-100 sm:scale-105"
+          className="object-cover object-[60%_20%] sm:object-[55%_20%] lg:object-[50%_20%] scale-100 sm:scale-100"
         />
 
         <div className="absolute inset-0 bg-black/30 z-1" />
         <div className="absolute inset-0 vhs-scanlines z-2" />
         <div className="vhs-band z-3" />
         <div className="absolute inset-0 vhs-vignette z-4" />
-        <div className="absolute inset-0 bg-linear-to-t from-[#080808] via-black/50 to-transparent z-5 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#080808] via-black/40 to-transparent z-5 pointer-events-none" />
       </div>
 
       {/* CONTENT */}
@@ -112,8 +154,10 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
           <div className="lg:flex-1 flex flex-col justify-center items-center lg:items-start w-full">
             <div className="w-full max-w-lg">
               <h1 className="text-4xl sm:text-5xl lg:text-7xl tracking-[0.35em] mb-8 text-center lg:text-left whitespace-nowrap">
-                {displayText}
-                <span className="animate-pulse">_</span>
+                <span className="vhs-pixel-text" style={glitchStyle}>
+                  {displayText}
+                </span>
+                <span className="text-white animate-pulse">_</span>
               </h1>
             </div>
 
@@ -165,7 +209,6 @@ export const HeroSection = ({ setHighlightedCard }: HeroSectionProps) => {
                     onClick={() => scrollToRelease(release.id)}
                     className="group relative w-full text-left p-4 pl-2 rounded-lg cursor-pointer overflow-hidden"
                   >
-                    {/* hover fill */}
                     <div className="absolute inset-0 rounded-lg bg-linear-to-r from-white/8 via-white/4 to-transparent scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 pointer-events-none" />
 
                     <div className="relative z-10">

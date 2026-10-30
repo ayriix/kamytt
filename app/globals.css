@@ -281,3 +281,9 @@
     transform: scaleY(1);
   }
 }
+
+.vhs-pixel-text {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85);
+  will-change: text-shadow, transform;
+}

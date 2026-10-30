@@ -106,21 +106,6 @@ export const releases = [
   ),
 
   createRelease(
-    "cooked",
-    "COOKED",
-    "2025-05-15",
-    "/covers/5.png",
-    {
-      bandlink: "https://band.link/cooked",
-    },
-    {
-      file: "/audios/cooked.mp3",
-      start: 58.8,
-      duration: 30,
-    },
-  ),
-
-  createRelease(
     "crunch",
     "CRUNCH",
     "2025-06-01",
@@ -146,21 +131,6 @@ export const releases = [
     {
       file: "/audios/absence.mp3",
       start: 94.3,
-      duration: 30,
-    },
-  ),
-
-  createRelease(
-    "glide",
-    "GLIDE",
-    "2025-07-08",
-    "/covers/8.jpg",
-    {
-      bandlink: "https://band.link/gl1de",
-    },
-    {
-      file: "/audios/glide.mp3",
-      start: 50.6,
       duration: 30,
     },
   ),
@@ -639,6 +609,46 @@ export const releases = [
     {
       file: "/audios/closed.wav",
       start: 70,
+      duration: 30,
+    },
+  ),
+  createRelease(
+    "pskov",
+    "PSKOV TEKK",
+    "2026-11-13",
+    "/covers/26.jpg",
+    {
+      soundcloud: [
+        {
+          url: "https://soundcloud.com/kamytt/pskovtekk",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/pskovtekk-slowed",
+          label: "SLOWED",
+        },
+        {
+          url: "https://soundcloud.com/kamytt/pskovtekk-ultraslowed",
+          label: "ULTRASLOWED",
+        },
+      ],
+      bandlink: "https://band.link/oQaRW",
+      youtube: [
+        {
+          url: "https://kamytt.vercel.app/404",
+        },
+        {
+          url: "https://kamytt.vercel.app/",
+          label: "SLOWED",
+        },
+        {
+          url: "https://kamytt.vercel.app",
+          label: "ULTRASLOWED",
+        },
+      ],
+    },
+    {
+      file: "/audios/pskovtekk.wav",
+      start: 11,
       duration: 30,
     },
   ),
