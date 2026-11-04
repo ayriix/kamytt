@@ -485,11 +485,7 @@ export const releases = [
     {
       soundcloud: [
         {
-          url: "https://soundcloud.com/kamytt/bankaparilka",
-        },
-        {
-          url: "https://soundcloud.com/kamytt/bankaparilkaslowed",
-          label: "SLOWED",
+          url: "https://soundcloud.com/kamytt/sets/banka-parilka",
         },
       ],
       bandlink: "https://band.link/JHtFw",
@@ -580,11 +576,7 @@ export const releases = [
     {
       soundcloud: [
         {
-          url: "https://soundcloud.com/kamytt/closed-hardtekk",
-        },
-        {
-          url: "https://soundcloud.com/kamytt/closed-slowed",
-          label: "SLOWED",
+          url: "https://soundcloud.com/kamytt/sets/closed-hardtekk",
         },
         {
           url: "https://soundcloud.com/kamytt/plenka",
