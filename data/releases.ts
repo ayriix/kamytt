@@ -378,11 +378,7 @@ export const releases = [
     {
       soundcloud: [
         {
-          url: "https://soundcloud.com/kamytt/sugarjump",
-        },
-        {
-          url: "https://soundcloud.com/kamytt/sugarjump-slowed",
-          label: "SLOWED",
+          url: "https://soundcloud.com/kamytt/sets/sugarjump",
         },
       ],
       bandlink: "https://band.link/sugarjump",
@@ -536,15 +532,7 @@ export const releases = [
     {
       soundcloud: [
         {
-          url: "https://soundcloud.com/kamytt/hamstertekk",
-        },
-        {
-          url: "https://soundcloud.com/kamytt/hamstertekk-slowed",
-          label: "SLOWED",
-        },
-        {
-          url: "https://soundcloud.com/kamytt/hamstertekk-ultraslowed",
-          label: "ULTRASLOWED",
+          url: "https://soundcloud.com/kamytt/sets/hamstertekk",
         },
       ],
       bandlink: "https://band.link/hamstertekk",
@@ -577,10 +565,6 @@ export const releases = [
       soundcloud: [
         {
           url: "https://soundcloud.com/kamytt/sets/closed-hardtekk",
-        },
-        {
-          url: "https://soundcloud.com/kamytt/plenka",
-          label: "ULTRASLOWED",
         },
       ],
       bandlink: "https://band.link/oQaRW",
